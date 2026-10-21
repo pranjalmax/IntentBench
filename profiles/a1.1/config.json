@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0.0",
+  "experimentId": "intentbench-hard-dev-verification-a1.1",
+  "iteration": "A1.1",
+  "candidateSource": "exact immutable V0 HARD-DEV candidate archives",
+  "candidateIds": [
+    "CAND-001",
+    "CAND-002",
+    "CAND-003",
+    "CAND-004",
+    "CAND-005",
+    "CAND-006",
+    "CAND-007",
+    "CAND-008"
+  ],
+  "runtime": {
+    "dockerImage": "intentbench-codex:0.150.1",
+    "dockerImageId": "sha256:e77098ecaea63d73e29b114d18e847aac74379eb686b821046bfc87ec8f67ee4",
+    "codexCliVersion": "0.150.1",
+    "model": "gpt-5.6-sol",
+    "reasoningEffort": "high",
+    "sandbox": "workspace-write",
+    "approvalPolicy": "never",
+    "ephemeral": true,
+    "ignoreUserConfig": true,
+    "ignoreRules": true,
+    "strictConfig": true,
+    "projectDocMaxBytes": 0,
+    "mcpServers": {},
+    "shellInternet": false
+  },
+  "gate": {
+    "requiredRequirementMapping": true,
+    "requiredContradictoryEvidence": true,
+    "requiredReproduction": true,
+    "minimumBlockingConfidence": "HIGH",
+    "selfDeclaredEvidenceTypesArePlanningOnly": true,
+    "invalidReviewIsSemanticFailure": false
+  },
+  "reviewTimeoutMs": 900000,
+  "maximumHardDevIterations": 2
+}

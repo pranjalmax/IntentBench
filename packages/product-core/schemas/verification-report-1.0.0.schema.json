@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intentbench.local/schemas/verification-report-1.0.0.schema.json",
+  "title": "IntentBench calibrated verification report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "reportId",
+    "runId",
+    "snapshotId",
+    "generatedAt",
+    "verifier",
+    "verdict",
+    "review"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "reportId": { "$ref": "#/$defs/identifier" },
+    "runId": { "$ref": "#/$defs/identifier" },
+    "snapshotId": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "verifier": { "$ref": "#/$defs/verifier" },
+    "verdict": { "enum": ["COMPLETE", "INCOMPLETE"] },
+    "review": { "$ref": "#/$defs/review" }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "evidenceType": {
+      "enum": [
+        "STATIC_SOURCE",
+        "VISIBLE_TEST",
+        "TARGETED_RUNTIME",
+        "PUBLIC_CONFIG",
+        "PACKAGE_CONTRACT"
+      ]
+    },
+    "verifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "selectedIteration",
+        "promptHash",
+        "configHash",
+        "gateHash",
+        "protocolHash",
+        "implementationCommit"
+      ],
+      "properties": {
+        "selectedIteration": { "const": "A1.1" },
+        "promptHash": { "$ref": "#/$defs/sha256" },
+        "configHash": { "$ref": "#/$defs/sha256" },
+        "gateHash": { "$ref": "#/$defs/sha256" },
+        "protocolHash": { "$ref": "#/$defs/sha256" },
+        "implementationCommit": { "type": "string", "pattern": "^[a-f0-9]{40}$" }
+      }
+    },
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "classification",
+        "statement",
+        "criticality",
+        "observableSuccessCondition",
+        "allowedEvidenceTypes"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^R[1-9][0-9]*$" },
+        "classification": { "enum": ["REQUIRED", "ADVISORY"] },
+        "statement": { "type": "string", "minLength": 1 },
+        "criticality": { "enum": ["CRITICAL", "IMPORTANT", "NORMAL"] },
+        "observableSuccessCondition": { "type": "string", "minLength": 1 },
+        "allowedEvidenceTypes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/evidenceType" }
+        }
+      }
+    },
+    "proofObligation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requirementId", "proposition", "evidencePlan"],
+      "properties": {
+        "requirementId": { "type": "string", "pattern": "^R[1-9][0-9]*$" },
+        "proposition": { "type": "string", "minLength": 1 },
+        "evidencePlan": { "type": "string", "minLength": 1 }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "requirementIds",
+        "evidenceType",
+        "reproduction",
+        "observedBehavior",
+        "disposition"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^E[1-9][0-9]*$" },
+        "requirementIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^R[1-9][0-9]*$" }
+        },
+        "evidenceType": { "$ref": "#/$defs/evidenceType" },
+        "reproduction": { "type": "string", "minLength": 1 },
+        "observedBehavior": { "type": "string", "minLength": 1 },
+        "disposition": { "enum": ["SUPPORTS", "CONTRADICTS", "INCONCLUSIVE"] }
+      }
+    },
+    "calibration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "explicitRequirement",
+        "concreteObservedEvidence",
+        "reproducible",
+        "materialToCompliance"
+      ],
+      "properties": {
+        "explicitRequirement": { "type": "boolean" },
+        "concreteObservedEvidence": { "type": "boolean" },
+        "reproducible": { "type": "boolean" },
+        "materialToCompliance": { "type": "boolean" }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "proposedSeverity",
+        "requirementId",
+        "requirementStatement",
+        "claim",
+        "evidenceIds",
+        "evidenceType",
+        "reproduction",
+        "observedBehavior",
+        "expectedBehavior",
+        "confidence",
+        "calibration",
+        "calibratedSeverity",
+        "calibrationReason"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^F[1-9][0-9]*$" },
+        "proposedSeverity": { "enum": ["BLOCKING", "ADVISORY"] },
+        "requirementId": { "type": ["string", "null"] },
+        "requirementStatement": { "type": ["string", "null"] },
+        "claim": { "type": "string", "minLength": 1 },
+        "evidenceIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^E[1-9][0-9]*$" }
+        },
+        "evidenceType": { "$ref": "#/$defs/evidenceType" },
+        "reproduction": { "type": "string", "minLength": 1 },
+        "observedBehavior": { "type": "string", "minLength": 1 },
+        "expectedBehavior": { "type": "string", "minLength": 1 },
+        "confidence": { "enum": ["HIGH", "MEDIUM", "LOW"] },
+        "calibration": { "$ref": "#/$defs/calibration" },
+        "calibratedSeverity": { "enum": ["BLOCKING", "ADVISORY"] },
+        "calibrationReason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requirementId", "evidenceIds"],
+      "properties": {
+        "requirementId": { "type": "string", "pattern": "^R[1-9][0-9]*$" },
+        "evidenceIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^E[1-9][0-9]*$" }
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "requirements",
+        "proofObligations",
+        "evidence",
+        "blockingFindings",
+        "advisories",
+        "coverage",
+        "verdict"
+      ],
+      "properties": {
+        "schemaVersion": { "const": "1.0.0" },
+        "requirements": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/requirement" }
+        },
+        "proofObligations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/proofObligation" }
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/evidence" }
+        },
+        "blockingFindings": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/finding" }
+        },
+        "advisories": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/finding" }
+        },
+        "coverage": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/coverage" }
+        },
+        "verdict": { "enum": ["COMPLETE", "INCOMPLETE"] }
+      }
+    }
+  }
+}

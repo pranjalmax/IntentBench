@@ -1,0 +1,190 @@
+{
+  "schemaVersion": "1.0.0",
+  "experimentId": "intentbench-dev-baselines-v1",
+  "protocolCommit": "33e404a2ddad411d5f333744767cc7c2241f823a",
+  "phaseACompletedAt": "2026-09-02T01:04:40.133Z",
+  "oraclePhaseStartedAt": "2026-09-02T01:04:45.595Z",
+  "completedAt": "2026-09-02T01:05:15.419Z",
+  "runs": [
+    {
+      "taskId": "DEV-01",
+      "arm": "B0",
+      "agentStatus": "DONE",
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 2947.1368,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "pass",
+        "durationMs": 66.13169999999991,
+        "exitCode": 0
+      },
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "wallClockDurationMs": 88327,
+      "falseDone": false
+    },
+    {
+      "taskId": "DEV-02",
+      "arm": "B0",
+      "agentStatus": "DONE",
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 733.0406999999996,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "pass",
+        "durationMs": 4057.6947999999993,
+        "exitCode": 0
+      },
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "wallClockDurationMs": 110608,
+      "falseDone": false
+    },
+    {
+      "taskId": "DEV-03",
+      "arm": "B0",
+      "agentStatus": "DONE",
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 748.2599000000009,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "pass",
+        "durationMs": 65.04539999999906,
+        "exitCode": 0
+      },
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "wallClockDurationMs": 67656,
+      "falseDone": false
+    },
+    {
+      "taskId": "DEV-04",
+      "arm": "B0",
+      "agentStatus": "DONE",
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 733.0273000000016,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "pass",
+        "durationMs": 65.46999999999753,
+        "exitCode": 0
+      },
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "wallClockDurationMs": 119839,
+      "falseDone": false
+    },
+    {
+      "taskId": "DEV-01",
+      "arm": "B1",
+      "agentStatus": "DONE",
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 726.025999999998,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "pass",
+        "durationMs": 71.25580000000264,
+        "exitCode": 0
+      },
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "wallClockDurationMs": 107631,
+      "falseDone": false
+    },
+    {
+      "taskId": "DEV-02",
+      "arm": "B1",
+      "agentStatus": "DONE",
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 740.4069999999992,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "pass",
+        "durationMs": 4158.428200000002,
+        "exitCode": 0
+      },
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "wallClockDurationMs": 148633,
+      "falseDone": false
+    },
+    {
+      "taskId": "DEV-03",
+      "arm": "B1",
+      "agentStatus": "DONE",
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 724.3641000000025,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "pass",
+        "durationMs": 64.79009999999835,
+        "exitCode": 0
+      },
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "wallClockDurationMs": 142088,
+      "falseDone": false
+    },
+    {
+      "taskId": "DEV-04",
+      "arm": "B1",
+      "agentStatus": "DONE",
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 738.8168000000005,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "pass",
+        "durationMs": 65.32749999999942,
+        "exitCode": 0
+      },
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "wallClockDurationMs": 168641,
+      "falseDone": false
+    }
+  ],
+  "metrics": {
+    "B0": {
+      "fctr": 1,
+      "semanticPasses": 4,
+      "doneDeclarations": 4,
+      "falseDoneCount": 0,
+      "falseDoneRate": 0,
+      "visiblePasses": 4,
+      "blockedRuns": 0,
+      "unknownRuns": 0,
+      "errorRuns": 0,
+      "protocolViolations": 0,
+      "totalRuntimeMs": 386430
+    },
+    "B1": {
+      "fctr": 1,
+      "semanticPasses": 4,
+      "doneDeclarations": 4,
+      "falseDoneCount": 0,
+      "falseDoneRate": 0,
+      "visiblePasses": 4,
+      "blockedRuns": 0,
+      "unknownRuns": 0,
+      "errorRuns": 0,
+      "protocolViolations": 0,
+      "totalRuntimeMs": 566993
+    }
+  }
+}

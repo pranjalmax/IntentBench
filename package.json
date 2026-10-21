@@ -1,0 +1,54 @@
+{
+  "name": "intentbench",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": "22.20.0",
+    "npm": "10.9.3"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "node --test scripts/public-audit.test.mjs && vitest run",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "product:serve": "npm run product:build --silent && node dist/packages/product-service/src/cli.js",
+    "product:build": "npm run build --silent && vite build --config packages/product-web/vite.config.ts",
+    "product:web:dev": "vite --config packages/product-web/vite.config.ts --host 127.0.0.1",
+    "audit:public": "npm run build --silent && node scripts/public-audit.mjs",
+    "test:browser": "node scripts/public-browser.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@eslint/js": "10.0.1",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "26.4.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/yauzl": "3.4.0",
+    "@types/yazl": "3.3.1",
+    "@vitejs/plugin-react": "^6.1.2",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "eslint": "10.9.1",
+    "jsdom": "^29.1.1",
+    "playwright-core": "^1.64.1",
+    "prettier": "3.9.6",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.68.0",
+    "vite": "^8.3.4",
+    "vitest": "4.1.11",
+    "yazl": "3.3.1"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource-variable/source-serif-4": "^5.3.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "yauzl": "3.4.0"
+  }
+}

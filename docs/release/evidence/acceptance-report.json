@@ -1,0 +1,607 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "report_e4e4e77187a64c39a7ef3bb254e93fce",
+  "runId": "run_8bfa56d7c07f47d4be2f88aa56e20e68",
+  "snapshotId": "sha256:790be69176279cfe5859aa8bb7cd974bacbaec667a75a6b51e8ac52882dd31d9",
+  "generatedAt": "2026-10-19T07:13:05.231Z",
+  "verifier": {
+    "selectedIteration": "A1.1",
+    "promptHash": "0b9c8e11296b1735a51b59f322a0d5fadaaeadf56688061056d3b0bf57c1d3c2",
+    "configHash": "f5ad0f7cca23196d73a76fa61c64b9b27d43382fd90d03cdd6fbc9609eab902a",
+    "gateHash": "9ea3ed019e8cb7d0b316960f4a0c5091aa69149a81f875c9166322c840764728",
+    "protocolHash": "eceea1297edfb27b83a2280d99d48c834eae73b5dae6e2dff2c8cf3b929031fe",
+    "implementationCommit": "7eb249805213e10ba904a6e774d61433ad23bfe8"
+  },
+  "verdict": "COMPLETE",
+  "review": {
+    "schemaVersion": "1.0.0",
+    "requirements": [
+      {
+        "id": "R1",
+        "classification": "REQUIRED",
+        "statement": "src/notes.mjs must provide the named export summarizeNotes(records).",
+        "criticality": "CRITICAL",
+        "observableSuccessCondition": "An ES module import of the named summarizeNotes export from src/notes.mjs succeeds and yields a function.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE",
+          "VISIBLE_TEST",
+          "PACKAGE_CONTRACT"
+        ]
+      },
+      {
+        "id": "R2",
+        "classification": "REQUIRED",
+        "statement": "The result must be an object with the fields activeCount, archivedCount, and notes.",
+        "criticality": "CRITICAL",
+        "observableSuccessCondition": "Calling summarizeNotes with contract-valid input returns an object containing the three specified fields.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE",
+          "VISIBLE_TEST",
+          "TARGETED_RUNTIME"
+        ]
+      },
+      {
+        "id": "R3",
+        "classification": "REQUIRED",
+        "statement": "activeCount must equal the number of records whose archived flag is false.",
+        "criticality": "CRITICAL",
+        "observableSuccessCondition": "For contract-valid input, activeCount equals the count of records with archived === false.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE",
+          "VISIBLE_TEST",
+          "TARGETED_RUNTIME"
+        ]
+      },
+      {
+        "id": "R4",
+        "classification": "REQUIRED",
+        "statement": "archivedCount must equal the number of records whose archived flag is true.",
+        "criticality": "CRITICAL",
+        "observableSuccessCondition": "For contract-valid input, archivedCount equals the count of records with archived === true.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE",
+          "VISIBLE_TEST",
+          "TARGETED_RUNTIME"
+        ]
+      },
+      {
+        "id": "R5",
+        "classification": "REQUIRED",
+        "statement": "notes must contain one { id, title } object for each active record.",
+        "criticality": "CRITICAL",
+        "observableSuccessCondition": "Each record with archived === false contributes exactly one note containing its id and processed title.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE",
+          "VISIBLE_TEST",
+          "TARGETED_RUNTIME"
+        ]
+      },
+      {
+        "id": "R6",
+        "classification": "REQUIRED",
+        "statement": "Each returned note title must have leading and trailing whitespace trimmed.",
+        "criticality": "CRITICAL",
+        "observableSuccessCondition": "Returned titles omit the leading and trailing whitespace present in their corresponding input titles.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE",
+          "VISIBLE_TEST",
+          "TARGETED_RUNTIME"
+        ]
+      },
+      {
+        "id": "R7",
+        "classification": "REQUIRED",
+        "statement": "Returned notes must be sorted by trimmed title using case-sensitive ASCII order.",
+        "criticality": "CRITICAL",
+        "observableSuccessCondition": "For printable-ASCII titles, notes appear in ascending case-sensitive ASCII order of their trimmed titles.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE",
+          "TARGETED_RUNTIME"
+        ]
+      },
+      {
+        "id": "R8",
+        "classification": "REQUIRED",
+        "statement": "Equal trimmed-title ties must be broken by ID using the same case-sensitive ASCII order.",
+        "criticality": "CRITICAL",
+        "observableSuccessCondition": "Notes with equal trimmed titles appear in ascending case-sensitive ASCII order of id.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE",
+          "VISIBLE_TEST",
+          "TARGETED_RUNTIME"
+        ]
+      },
+      {
+        "id": "R9",
+        "classification": "REQUIRED",
+        "statement": "Archived notes must not appear in notes.",
+        "criticality": "CRITICAL",
+        "observableSuccessCondition": "No input record with archived === true contributes an object to the returned notes array.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE",
+          "VISIBLE_TEST",
+          "TARGETED_RUNTIME"
+        ]
+      },
+      {
+        "id": "R10",
+        "classification": "REQUIRED",
+        "statement": "The input array must not be modified.",
+        "criticality": "IMPORTANT",
+        "observableSuccessCondition": "The input array retains its elements, order, and length after the call.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE",
+          "VISIBLE_TEST",
+          "TARGETED_RUNTIME"
+        ]
+      },
+      {
+        "id": "R11",
+        "classification": "REQUIRED",
+        "statement": "Input records must not be modified.",
+        "criticality": "IMPORTANT",
+        "observableSuccessCondition": "Every input record retains its original id, title, and archived values after the call.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE",
+          "VISIBLE_TEST",
+          "TARGETED_RUNTIME"
+        ]
+      },
+      {
+        "id": "R12",
+        "classification": "REQUIRED",
+        "statement": "Every returned note must be a new object.",
+        "criticality": "IMPORTANT",
+        "observableSuccessCondition": "No returned note is object-identical to an input record.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE",
+          "VISIBLE_TEST",
+          "TARGETED_RUNTIME"
+        ]
+      },
+      {
+        "id": "R13",
+        "classification": "REQUIRED",
+        "statement": "Editing a returned title must not change the corresponding input record.",
+        "criticality": "IMPORTANT",
+        "observableSuccessCondition": "Assigning a new value to a returned note's title leaves the source record's title unchanged.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE",
+          "VISIBLE_TEST",
+          "TARGETED_RUNTIME"
+        ]
+      },
+      {
+        "id": "R14",
+        "classification": "REQUIRED",
+        "statement": "An empty input must produce zero active and archived counts and an empty notes array.",
+        "criticality": "IMPORTANT",
+        "observableSuccessCondition": "summarizeNotes([]) returns { activeCount: 0, archivedCount: 0, notes: [] }.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE",
+          "VISIBLE_TEST",
+          "TARGETED_RUNTIME"
+        ]
+      },
+      {
+        "id": "R15",
+        "classification": "REQUIRED",
+        "statement": "The function must be synchronous.",
+        "criticality": "IMPORTANT",
+        "observableSuccessCondition": "The call directly returns the result object rather than a Promise or deferred result.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE",
+          "TARGETED_RUNTIME"
+        ]
+      },
+      {
+        "id": "R16",
+        "classification": "REQUIRED",
+        "statement": "The function must have no filesystem side effects.",
+        "criticality": "NORMAL",
+        "observableSuccessCondition": "The implementation performs no filesystem access or mutation.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE"
+        ]
+      },
+      {
+        "id": "R17",
+        "classification": "REQUIRED",
+        "statement": "The function must have no network side effects.",
+        "criticality": "NORMAL",
+        "observableSuccessCondition": "The implementation performs no network access.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE"
+        ]
+      },
+      {
+        "id": "R18",
+        "classification": "REQUIRED",
+        "statement": "The function must have no clock side effects.",
+        "criticality": "NORMAL",
+        "observableSuccessCondition": "The implementation does not read, write, or otherwise interact with clock facilities.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE"
+        ]
+      },
+      {
+        "id": "R19",
+        "classification": "REQUIRED",
+        "statement": "The function must have no process side effects.",
+        "criticality": "NORMAL",
+        "observableSuccessCondition": "The implementation does not interact with or mutate process state.",
+        "allowedEvidenceTypes": [
+          "STATIC_SOURCE"
+        ]
+      },
+      {
+        "id": "R20",
+        "classification": "REQUIRED",
+        "statement": "The provided tests must be run with npm test.",
+        "criticality": "NORMAL",
+        "observableSuccessCondition": "Running npm test invokes and successfully completes the provided test suite.",
+        "allowedEvidenceTypes": [
+          "PUBLIC_CONFIG",
+          "VISIBLE_TEST"
+        ]
+      }
+    ],
+    "proofObligations": [
+      {
+        "requirementId": "R1",
+        "proposition": "src/notes.mjs exposes summarizeNotes as a named function export.",
+        "evidencePlan": "Inspect the module declaration and confirm the visible tests can import the named export."
+      },
+      {
+        "requirementId": "R2",
+        "proposition": "Every successful call returns an object with activeCount, archivedCount, and notes.",
+        "evidencePlan": "Inspect the return statement and observe returned objects in the visible and targeted runtime checks."
+      },
+      {
+        "requirementId": "R3",
+        "proposition": "activeCount counts exactly the records marked active.",
+        "evidencePlan": "Trace filtering and count calculation in source and exercise mixed active and archived input."
+      },
+      {
+        "requirementId": "R4",
+        "proposition": "archivedCount counts exactly the records marked archived.",
+        "evidencePlan": "Trace the archived-count calculation under the documented boolean-input precondition and exercise mixed input."
+      },
+      {
+        "requirementId": "R5",
+        "proposition": "There is exactly one id/title note for every active record.",
+        "evidencePlan": "Inspect the filter/map pipeline and compare mixed-input records with the observed notes output."
+      },
+      {
+        "requirementId": "R6",
+        "proposition": "Returned titles have leading and trailing whitespace removed.",
+        "evidencePlan": "Inspect title transformation and run records whose titles contain surrounding spaces."
+      },
+      {
+        "requirementId": "R7",
+        "proposition": "Notes use case-sensitive ASCII ordering of trimmed titles.",
+        "evidencePlan": "Inspect the comparator and run printable-ASCII titles differing by case."
+      },
+      {
+        "requirementId": "R8",
+        "proposition": "Equal trimmed titles are ordered by id using case-sensitive ASCII order.",
+        "evidencePlan": "Inspect the comparator fallback and run equal-title records with IDs supplied out of order."
+      },
+      {
+        "requirementId": "R9",
+        "proposition": "Archived records never contribute returned notes.",
+        "evidencePlan": "Inspect the filter predicate and exercise mixed and entirely archived inputs."
+      },
+      {
+        "requirementId": "R10",
+        "proposition": "Processing does not mutate the input array.",
+        "evidencePlan": "Inspect whether transformations operate on a derived array, run frozen-input tests, and compare input state before and after a targeted call."
+      },
+      {
+        "requirementId": "R11",
+        "proposition": "Processing does not mutate any input record.",
+        "evidencePlan": "Inspect record handling, run the frozen-record test, and compare serialized record state before and after processing."
+      },
+      {
+        "requirementId": "R12",
+        "proposition": "Every returned note has a distinct identity from every input record.",
+        "evidencePlan": "Inspect object construction in the map operation and perform identity comparisons at runtime."
+      },
+      {
+        "requirementId": "R13",
+        "proposition": "Returned title mutation cannot propagate to an input record.",
+        "evidencePlan": "Assign to a returned title and then observe the corresponding source title."
+      },
+      {
+        "requirementId": "R14",
+        "proposition": "Empty input yields both counts as zero and notes as an empty array.",
+        "evidencePlan": "Trace the empty-array pipeline and use the visible empty-input assertion."
+      },
+      {
+        "requirementId": "R15",
+        "proposition": "summarizeNotes returns its result synchronously.",
+        "evidencePlan": "Inspect the non-async function body and confirm a runtime result is not a Promise."
+      },
+      {
+        "requirementId": "R16",
+        "proposition": "Execution has no filesystem side effects.",
+        "evidencePlan": "Inspect the complete implementation for imports or calls to filesystem facilities."
+      },
+      {
+        "requirementId": "R17",
+        "proposition": "Execution has no network side effects.",
+        "evidencePlan": "Inspect the complete implementation for imports or calls to network facilities."
+      },
+      {
+        "requirementId": "R18",
+        "proposition": "Execution has no clock side effects.",
+        "evidencePlan": "Inspect the complete implementation for clock or timer access."
+      },
+      {
+        "requirementId": "R19",
+        "proposition": "Execution has no process side effects.",
+        "evidencePlan": "Inspect the complete implementation for process access or mutation."
+      },
+      {
+        "requirementId": "R20",
+        "proposition": "npm test is configured to run the provided tests and the command completes successfully.",
+        "evidencePlan": "Inspect package.json's test script and execute npm test without installing dependencies."
+      }
+    ],
+    "evidence": [
+      {
+        "id": "E1",
+        "requirementIds": [
+          "R1",
+          "R2",
+          "R3",
+          "R4",
+          "R5",
+          "R6",
+          "R7",
+          "R8",
+          "R9",
+          "R10",
+          "R11",
+          "R12",
+          "R13",
+          "R14",
+          "R15"
+        ],
+        "evidenceType": "STATIC_SOURCE",
+        "reproduction": "Run `sed -n '1,240p' src/notes.mjs` from /workspace and inspect the complete function.",
+        "observedBehavior": "The module declares `export function summarizeNotes(records)`. It filters with `!record.archived`, maps each active record to a fresh `{ id: record.id, title: record.title.trim() }` object, sorts the derived array with direct string `<` and `>` comparison by title and then id, and synchronously returns `{ activeCount: notes.length, archivedCount: records.length - notes.length, notes }`. Sorting occurs after map on the derived array, not on records. With the documented boolean archived flags, the two count expressions count false and true flags respectively. The same direct pipeline yields zero counts and an empty notes array for empty input.",
+        "disposition": "SUPPORTS"
+      },
+      {
+        "id": "E2",
+        "requirementIds": [
+          "R1",
+          "R2",
+          "R3",
+          "R4",
+          "R5",
+          "R6",
+          "R8",
+          "R9",
+          "R10",
+          "R11",
+          "R12",
+          "R13",
+          "R14"
+        ],
+        "evidenceType": "VISIBLE_TEST",
+        "reproduction": "Inspect tests/notes.test.mjs, then run `npm test` from /workspace.",
+        "observedBehavior": "The visible tests import the named export and assert mixed-input counts, title trimming, active-note filtering, title ordering, equal-title ID ordering, frozen-input compatibility, returned-object independence, empty input, and entirely archived input. The command exited 0 with 1 test file passing, 0 failures, and 0 skipped tests.",
+        "disposition": "SUPPORTS"
+      },
+      {
+        "id": "E3",
+        "requirementIds": [
+          "R2",
+          "R3",
+          "R4",
+          "R5",
+          "R6",
+          "R7",
+          "R8",
+          "R9",
+          "R10",
+          "R11",
+          "R12",
+          "R13",
+          "R15"
+        ],
+        "evidenceType": "TARGETED_RUNTIME",
+        "reproduction": "Run `node --input-type=module` from /workspace, import summarizeNotes, and call it with `[{id:'b',title:' x ',archived:false},{id:'a',title:'x',archived:false},{id:'D',title:'apple',archived:false},{id:'C',title:'Apple',archived:false},{id:'e',title:' archived ',archived:true}]`; snapshot the result, compare serialized input before and after, check returned/input identities, verify the result is not a Promise, mutate result.notes[0].title, and observe records[3].title.",
+        "observedBehavior": "Before result mutation, the output was `{activeCount:4,archivedCount:1,notes:[{id:'C',title:'Apple'},{id:'D',title:'apple'},{id:'a',title:'x'},{id:'b',title:'x'}]}`. The archived record was absent, uppercase `Apple` preceded lowercase `apple`, and equal `x` titles were ordered by IDs `a` then `b`. The serialized input remained unchanged, every returned note had a new identity, editing the first returned title left its input title as `Apple`, and the result was not a Promise.",
+        "disposition": "SUPPORTS"
+      },
+      {
+        "id": "E4",
+        "requirementIds": [
+          "R16",
+          "R17",
+          "R18",
+          "R19"
+        ],
+        "evidenceType": "STATIC_SOURCE",
+        "reproduction": "Run `sed -n '1,240p' src/notes.mjs` and inspect the complete module for imports and external API access.",
+        "observedBehavior": "The complete module contains no imports and only defines a local comparator, performs Array filter/map/sort operations, trims strings, calculates counts, and constructs a return object. It contains no filesystem, network, clock, timer, or process access.",
+        "disposition": "SUPPORTS"
+      },
+      {
+        "id": "E5",
+        "requirementIds": [
+          "R20"
+        ],
+        "evidenceType": "PUBLIC_CONFIG",
+        "reproduction": "Run `sed -n '1,200p' package.json` from /workspace.",
+        "observedBehavior": "package.json defines the test script as `node --test tests/notes.test.mjs` and declares no dependencies requiring installation.",
+        "disposition": "SUPPORTS"
+      },
+      {
+        "id": "E6",
+        "requirementIds": [
+          "R20"
+        ],
+        "evidenceType": "VISIBLE_TEST",
+        "reproduction": "Run `npm test` from /workspace with the repository as provided.",
+        "observedBehavior": "npm invoked `node --test tests/notes.test.mjs`; the test run completed successfully with exit code 0, 1 passing test file, and no failures, cancellations, skips, or todos.",
+        "disposition": "SUPPORTS"
+      }
+    ],
+    "blockingFindings": [],
+    "advisories": [],
+    "coverage": [
+      {
+        "requirementId": "R1",
+        "evidenceIds": [
+          "E1",
+          "E2"
+        ]
+      },
+      {
+        "requirementId": "R2",
+        "evidenceIds": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      {
+        "requirementId": "R3",
+        "evidenceIds": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      {
+        "requirementId": "R4",
+        "evidenceIds": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      {
+        "requirementId": "R5",
+        "evidenceIds": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      {
+        "requirementId": "R6",
+        "evidenceIds": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      {
+        "requirementId": "R7",
+        "evidenceIds": [
+          "E1",
+          "E3"
+        ]
+      },
+      {
+        "requirementId": "R8",
+        "evidenceIds": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      {
+        "requirementId": "R9",
+        "evidenceIds": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      {
+        "requirementId": "R10",
+        "evidenceIds": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      {
+        "requirementId": "R11",
+        "evidenceIds": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      {
+        "requirementId": "R12",
+        "evidenceIds": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      {
+        "requirementId": "R13",
+        "evidenceIds": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      {
+        "requirementId": "R14",
+        "evidenceIds": [
+          "E1",
+          "E2"
+        ]
+      },
+      {
+        "requirementId": "R15",
+        "evidenceIds": [
+          "E1",
+          "E3"
+        ]
+      },
+      {
+        "requirementId": "R16",
+        "evidenceIds": [
+          "E4"
+        ]
+      },
+      {
+        "requirementId": "R17",
+        "evidenceIds": [
+          "E4"
+        ]
+      },
+      {
+        "requirementId": "R18",
+        "evidenceIds": [
+          "E4"
+        ]
+      },
+      {
+        "requirementId": "R19",
+        "evidenceIds": [
+          "E4"
+        ]
+      },
+      {
+        "requirementId": "R20",
+        "evidenceIds": [
+          "E5",
+          "E6"
+        ]
+      }
+    ],
+    "verdict": "COMPLETE"
+  }
+}

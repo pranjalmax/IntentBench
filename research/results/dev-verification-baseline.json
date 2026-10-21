@@ -1,0 +1,253 @@
+{
+  "schemaVersion": "1.0.0",
+  "experimentId": "intentbench-dev-verification-v0",
+  "protocolCommit": "961be74820a794f1adf6f700263e9ee496fc5acb",
+  "phaseACompletedAt": "2026-09-03T04:20:49.751Z",
+  "truthRevealStartedAt": "2026-09-06T03:44:48.279Z",
+  "completedAt": "2026-09-06T03:45:13.113Z",
+  "runs": [
+    {
+      "candidateId": "CAND-001",
+      "taskId": "DEV-03",
+      "truthClass": "MUTANT",
+      "expectedVerdict": "INCOMPLETE",
+      "verdict": "INCOMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 713.8629000000001,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "fail",
+        "durationMs": 64.61650000000009,
+        "exitCode": 0,
+        "failureCode": "event-id-idempotency",
+        "detail": "Different event IDs were incorrectly deduplicated"
+      },
+      "explanationIdentifiedActualDefect": true,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 52347
+    },
+    {
+      "candidateId": "CAND-002",
+      "taskId": "DEV-01",
+      "truthClass": "GOLDEN",
+      "expectedVerdict": "COMPLETE",
+      "verdict": "COMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 704.4056,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "pass",
+        "durationMs": 65.7502999999997,
+        "exitCode": 0
+      },
+      "explanationIdentifiedActualDefect": null,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 47936
+    },
+    {
+      "candidateId": "CAND-003",
+      "taskId": "DEV-04",
+      "truthClass": "MUTANT",
+      "expectedVerdict": "INCOMPLETE",
+      "verdict": "INCOMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 701.1428999999998,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "fail",
+        "durationMs": 63.978799999998955,
+        "exitCode": 0,
+        "failureCode": "atomic-ownership-transfer",
+        "detail": "Partial ownership state survived the injected failure"
+      },
+      "explanationIdentifiedActualDefect": true,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 50029
+    },
+    {
+      "candidateId": "CAND-004",
+      "taskId": "DEV-02",
+      "truthClass": "GOLDEN",
+      "expectedVerdict": "COMPLETE",
+      "verdict": "COMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 710.955100000001,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "pass",
+        "durationMs": 4226.022099999998,
+        "exitCode": 0
+      },
+      "explanationIdentifiedActualDefect": null,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 80687
+    },
+    {
+      "candidateId": "CAND-005",
+      "taskId": "DEV-01",
+      "truthClass": "MUTANT",
+      "expectedVerdict": "INCOMPLETE",
+      "verdict": "INCOMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 715.3259999999991,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "fail",
+        "durationMs": 65.91909999999916,
+        "exitCode": 0,
+        "failureCode": "authorization-at-mutation-boundary",
+        "detail": "Member invocation of the deletion boundary was not denied"
+      },
+      "explanationIdentifiedActualDefect": true,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 63911
+    },
+    {
+      "candidateId": "CAND-006",
+      "taskId": "DEV-03",
+      "truthClass": "GOLDEN",
+      "expectedVerdict": "COMPLETE",
+      "verdict": "COMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 707.7668000000012,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "pass",
+        "durationMs": 66.6298999999999,
+        "exitCode": 0
+      },
+      "explanationIdentifiedActualDefect": null,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 52581
+    },
+    {
+      "candidateId": "CAND-007",
+      "taskId": "DEV-02",
+      "truthClass": "MUTANT",
+      "expectedVerdict": "INCOMPLETE",
+      "verdict": "INCOMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 701.939699999999,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "fail",
+        "durationMs": 3731.161,
+        "exitCode": 0,
+        "failureCode": "public-package-export",
+        "detail": "External TypeScript consumer could not import package: "
+      },
+      "explanationIdentifiedActualDefect": true,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 63098
+    },
+    {
+      "candidateId": "CAND-008",
+      "taskId": "DEV-04",
+      "truthClass": "GOLDEN",
+      "expectedVerdict": "COMPLETE",
+      "verdict": "COMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 703.2674000000006,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "status": "pass",
+        "durationMs": 65.82259999999951,
+        "exitCode": 0
+      },
+      "explanationIdentifiedActualDefect": null,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 70428
+    }
+  ],
+  "metrics": {
+    "classificationAccuracy": 1,
+    "correctCount": 8,
+    "candidateCount": 8,
+    "mutantDetectionRate": 1,
+    "mutantsDetected": 4,
+    "mutantCount": 4,
+    "goldenAcceptanceRate": 1,
+    "goldensAccepted": 4,
+    "goldenCount": 4,
+    "falseAcceptRate": 0,
+    "falseAccepts": 0,
+    "protocolViolations": 0,
+    "unknownVerdicts": 0,
+    "visiblePasses": 8,
+    "oracleErrors": 0,
+    "reviewErrors": 0,
+    "totalRuntimeMs": 481017
+  }
+}

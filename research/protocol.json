@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0.0",
+  "experimentId": "intentbench-final-holdout-evaluation-v1",
+  "purpose": "One sealed comparison of frozen V0 and frozen A1.1 on byte-identical FINAL-HOLDOUT candidate archives.",
+  "holdout": {
+    "taskCount": 6,
+    "candidateCount": 12,
+    "expectedTree": "6a927bb5319a946c906e8698c26ca26de86c1899",
+    "modelEvaluatedBeforeProtocol": false
+  },
+  "arms": ["V0", "A1.1"],
+  "candidateOrderPolicy": "Sort FINAL task and variant tuples by SHA-256 of intentbench-final-holdout-evaluation-v1:<taskId>:<variant>, then assign CAND-001 through CAND-012.",
+  "runOrder": {
+    "phaseA1": "V0 CAND-001 through CAND-012 sequentially",
+    "phaseA2": "A1.1 CAND-001 through CAND-012 sequentially, only after V0 freeze",
+    "phaseB": "One evaluator-only truth reveal after both arm freezes"
+  },
+  "fairness": {
+    "candidateArchivesCreatedOnce": true,
+    "byteIdenticalInputsAcrossArms": true,
+    "oracleUnavailableToReviewers": true,
+    "noPostHoldoutTuning": true
+  },
+  "scoring": {
+    "goldenExpectedVerdict": "COMPLETE",
+    "mutantExpectedVerdict": "INCOMPLETE",
+    "semanticPassDefinesGolden": true,
+    "semanticFailDefinesMutant": true,
+    "evaluatorErrorExcludedFromClassification": true,
+    "unknownIsIncorrectClassification": true,
+    "explanationMatch": "Precommitted deterministic token match against evaluator failure code/detail; never an LLM judge."
+  }
+}

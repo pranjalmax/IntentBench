@@ -1,0 +1,255 @@
+{
+  "schemaVersion": "1.0.0",
+  "experimentId": "intentbench-hard-dev-verification-v0",
+  "protocolCommit": "ef724e1705ed0994151b5bb6aee204849c59ba44",
+  "phaseACompletedAt": "2026-09-30T17:54:42.080Z",
+  "truthRevealStartedAt": "2026-09-30T17:54:48.516Z",
+  "completedAt": "2026-09-30T17:54:50.999Z",
+  "hardDevHashBefore": "77a54f4802944cec339402a7f9c5db7e9b4927fa06a57cfea5d8b85da92f30f5",
+  "hardDevHashAfter": "77a54f4802944cec339402a7f9c5db7e9b4927fa06a57cfea5d8b85da92f30f5",
+  "runs": [
+    {
+      "candidateId": "CAND-001",
+      "taskId": "HARD-03",
+      "truthClass": "MUTANT",
+      "expectedVerdict": "INCOMPLETE",
+      "verdict": "INCOMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 186.06500000000003,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 121.53059999999999,
+        "exitCode": 0,
+        "status": "fail",
+        "failureCode": "durable-provider-identity",
+        "detail": "Retry after external success and transport ambiguity must not create a second charge."
+      },
+      "explanationIdentifiedActualDefect": true,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 46189
+    },
+    {
+      "candidateId": "CAND-002",
+      "taskId": "HARD-01",
+      "truthClass": "GOLDEN",
+      "expectedVerdict": "COMPLETE",
+      "verdict": "INCOMPLETE",
+      "correct": false,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 227.63120000000004,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 130.71370000000002,
+        "exitCode": 0,
+        "status": "pass"
+      },
+      "explanationIdentifiedActualDefect": null,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 83418
+    },
+    {
+      "candidateId": "CAND-003",
+      "taskId": "HARD-04",
+      "truthClass": "MUTANT",
+      "expectedVerdict": "INCOMPLETE",
+      "verdict": "INCOMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 193.75030000000004,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 101.41589999999997,
+        "exitCode": 0,
+        "status": "fail",
+        "failureCode": "config-preserves-falsy",
+        "detail": "Explicit CLI zero and false must override every lower-precedence value."
+      },
+      "explanationIdentifiedActualDefect": true,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 50823
+    },
+    {
+      "candidateId": "CAND-004",
+      "taskId": "HARD-02",
+      "truthClass": "GOLDEN",
+      "expectedVerdict": "COMPLETE",
+      "verdict": "INCOMPLETE",
+      "correct": false,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 187.44959999999992,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 110.74890000000005,
+        "exitCode": 0,
+        "status": "pass"
+      },
+      "explanationIdentifiedActualDefect": null,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 69408
+    },
+    {
+      "candidateId": "CAND-005",
+      "taskId": "HARD-01",
+      "truthClass": "MUTANT",
+      "expectedVerdict": "INCOMPLETE",
+      "verdict": "INCOMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 191.83310000000006,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 107.97679999999991,
+        "exitCode": 0,
+        "status": "fail",
+        "failureCode": "nested-resource-binding",
+        "detail": "Reads must bind the document to the exact authorized tenant and project."
+      },
+      "explanationIdentifiedActualDefect": false,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 48545
+    },
+    {
+      "candidateId": "CAND-006",
+      "taskId": "HARD-03",
+      "truthClass": "GOLDEN",
+      "expectedVerdict": "COMPLETE",
+      "verdict": "COMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 182.80050000000006,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 101.19130000000018,
+        "exitCode": 0,
+        "status": "pass"
+      },
+      "explanationIdentifiedActualDefect": null,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 79510
+    },
+    {
+      "candidateId": "CAND-007",
+      "taskId": "HARD-02",
+      "truthClass": "MUTANT",
+      "expectedVerdict": "INCOMPLETE",
+      "verdict": "INCOMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 185.98960000000034,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 108.12049999999999,
+        "exitCode": 0,
+        "status": "fail",
+        "failureCode": "atomic-version-boundary",
+        "detail": "A prepared request must lose when another service commits its expected version during preparation."
+      },
+      "explanationIdentifiedActualDefect": true,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 90249
+    },
+    {
+      "candidateId": "CAND-008",
+      "taskId": "HARD-04",
+      "truthClass": "GOLDEN",
+      "expectedVerdict": "COMPLETE",
+      "verdict": "COMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 184.64519999999993,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 105.2248999999997,
+        "exitCode": 0,
+        "status": "pass"
+      },
+      "explanationIdentifiedActualDefect": null,
+      "protocolViolation": false,
+      "protocolViolationReasons": [],
+      "reviewProcess": {
+        "exitCode": 0,
+        "timedOut": false,
+        "errorEvents": 0
+      },
+      "wallClockDurationMs": 337485
+    }
+  ],
+  "metrics": {
+    "classificationAccuracy": 0.75,
+    "correctCount": 6,
+    "candidateCount": 8,
+    "mutantDetectionRate": 1,
+    "mutantsDetected": 4,
+    "mutantCount": 4,
+    "goldenAcceptanceRate": 0.5,
+    "goldensAccepted": 2,
+    "goldenCount": 4,
+    "falseAcceptRate": 0,
+    "falseAccepts": 0,
+    "protocolViolations": 0,
+    "unknownVerdicts": 0,
+    "visiblePasses": 8,
+    "oracleErrors": 0,
+    "reviewErrors": 0,
+    "totalRuntimeMs": 805627
+  }
+}

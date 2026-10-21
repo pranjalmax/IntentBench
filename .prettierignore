@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.intentbench-data/
+.intentbench-auth/
+research/
+trajectories/
+profiles/
+advanced-verifier/freeze.json
+packages/advanced-verifier/src/gate.ts
+docs/release/evidence/
+third-party/

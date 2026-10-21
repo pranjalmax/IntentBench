@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0.0",
+  "mode": "GENUINE_LOCAL_ACCEPTANCE",
+  "runId": "run_8bfa56d7c07f47d4be2f88aa56e20e68",
+  "snapshotId": "sha256:790be69176279cfe5859aa8bb7cd974bacbaec667a75a6b51e8ac52882dd31d9",
+  "reportId": "report_e4e4e77187a64c39a7ef3bb254e93fce",
+  "verdict": "COMPLETE",
+  "completedAt": "2026-10-19T07:13:09.571Z",
+  "fixtureDigest": "a3b10a682f5a781fa5f05917305fa9f68baaf0b205ce9778759ef91e67b8b3c3",
+  "activityEvents": 18,
+  "requirements": 20,
+  "evidence": 6,
+  "inconclusive": 0,
+  "checks": [
+    {
+      "width": 1440,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "axeViolations": 0,
+      "overflow": false
+    }
+  ],
+  "consoleErrors": [],
+  "journey": [
+    "browser-upload",
+    "isolated-model",
+    "persisted-report",
+    "requirement-proof-evidence",
+    "source-byte-identity",
+    "history-reopen",
+    "JSON-export",
+    "Markdown-export"
+  ]
+}

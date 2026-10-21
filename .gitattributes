@@ -1,0 +1,7 @@
+* text=auto eol=lf
+*.png binary
+profiles/** text eol=lf
+packages/advanced-verifier/src/gate.ts text eol=lf
+# Preserve upstream notices and the validated reference script verbatim.
+third-party/NOTICES.md -whitespace
+runtime-image/entrypoint.sh -whitespace

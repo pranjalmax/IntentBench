@@ -1,0 +1,511 @@
+{
+  "schemaVersion": "1.0.0",
+  "experimentId": "intentbench-final-holdout-evaluation-v1",
+  "truthRevealStartedAt": "2026-10-05T23:22:55.124Z",
+  "completedAt": "2026-10-05T23:22:58.525Z",
+  "holdoutTree": "6a927bb5319a946c906e8698c26ca26de86c1899",
+  "arms": {
+    "V0": {
+      "metrics": {
+        "correctCount": 8,
+        "candidateCount": 12,
+        "classificationAccuracy": 0.6666666666666666,
+        "mutantsDetected": 6,
+        "mutantDetectionRate": 1,
+        "goldensAccepted": 2,
+        "goldenAcceptanceRate": 0.3333333333333333,
+        "falseAccepts": 0,
+        "falseAcceptRate": 0,
+        "falseRejects": 4,
+        "falseRejectRate": 0.6666666666666666,
+        "unknownVerdicts": 0,
+        "unknownRate": 0,
+        "totalRuntimeMs": 724390,
+        "medianRuntimeMs": 58015.5,
+        "protocolViolations": 0,
+        "reviewErrors": 0,
+        "structuredReviewErrors": 0
+      }
+    },
+    "A1.1": {
+      "metrics": {
+        "correctCount": 8,
+        "candidateCount": 12,
+        "classificationAccuracy": 0.6666666666666666,
+        "mutantsDetected": 5,
+        "mutantDetectionRate": 0.8333333333333334,
+        "goldensAccepted": 3,
+        "goldenAcceptanceRate": 0.5,
+        "falseAccepts": 0,
+        "falseAcceptRate": 0,
+        "falseRejects": 3,
+        "falseRejectRate": 0.5,
+        "unknownVerdicts": 1,
+        "unknownRate": 0.08333333333333333,
+        "totalRuntimeMs": 3748483,
+        "medianRuntimeMs": 311730.5,
+        "protocolViolations": 0,
+        "reviewErrors": 0,
+        "structuredReviewErrors": 1
+      }
+    }
+  },
+  "candidates": [
+    {
+      "candidateId": "CAND-001",
+      "taskId": "FINAL-02",
+      "truthClass": "GOLDEN",
+      "archiveDigest": "2b03eeeb3cba384cde9f8158333f0cba4e6fc2e0f09e6e186bb22d24e7a10114",
+      "semanticFailureCode": null,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 180,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 104,
+        "exitCode": 0,
+        "status": "pass"
+      },
+      "V0": {
+        "verdict": "INCOMPLETE",
+        "correct": false,
+        "explanationIdentifiedDefect": null,
+        "runtimeMs": 66018,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": null,
+        "blockingFindingCount": null
+      },
+      "A1.1": {
+        "verdict": "INCOMPLETE",
+        "correct": false,
+        "explanationIdentifiedDefect": null,
+        "runtimeMs": 358300,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": true,
+        "blockingFindingCount": 1
+      }
+    },
+    {
+      "candidateId": "CAND-002",
+      "taskId": "FINAL-04",
+      "truthClass": "GOLDEN",
+      "archiveDigest": "b57757b461419a2299eda8ccc531cf1e109c33e79dbf883b3a30317dd4e94134",
+      "semanticFailureCode": null,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 173,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 100,
+        "exitCode": 0,
+        "status": "pass"
+      },
+      "V0": {
+        "verdict": "COMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": null,
+        "runtimeMs": 60509,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": null,
+        "blockingFindingCount": null
+      },
+      "A1.1": {
+        "verdict": "COMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": null,
+        "runtimeMs": 212582,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": true,
+        "blockingFindingCount": 0
+      }
+    },
+    {
+      "candidateId": "CAND-003",
+      "taskId": "FINAL-01",
+      "truthClass": "MUTANT",
+      "archiveDigest": "8aa8bd9fe1d43baab469a641eff068d95a552a6eecb2acfc7e6444341781842c",
+      "semanticFailureCode": "late-acquisition-lease-release",
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 184,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 101,
+        "exitCode": 0,
+        "status": "fail",
+        "failureCode": "late-acquisition-lease-release",
+        "detail": "A lease delivered after cancellation must still be released exactly once."
+      },
+      "V0": {
+        "verdict": "INCOMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": true,
+        "runtimeMs": 60554,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": null,
+        "blockingFindingCount": null
+      },
+      "A1.1": {
+        "verdict": "INCOMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": true,
+        "runtimeMs": 290031,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": true,
+        "blockingFindingCount": 1
+      }
+    },
+    {
+      "candidateId": "CAND-004",
+      "taskId": "FINAL-06",
+      "truthClass": "MUTANT",
+      "archiveDigest": "e6c0ec05ca6fbd0f3a8b98356cc46ec5b9cc9ed68fb3795696c73edb403e2709",
+      "semanticFailureCode": "generation-fence",
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 171,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 98,
+        "exitCode": 0,
+        "status": "fail",
+        "failureCode": "generation-fence",
+        "detail": "A stale worker completion cannot terminate a restarted generation."
+      },
+      "V0": {
+        "verdict": "INCOMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": true,
+        "runtimeMs": 42754,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": null,
+        "blockingFindingCount": null
+      },
+      "A1.1": {
+        "verdict": "INCOMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": true,
+        "runtimeMs": 362152,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": true,
+        "blockingFindingCount": 7
+      }
+    },
+    {
+      "candidateId": "CAND-005",
+      "taskId": "FINAL-03",
+      "truthClass": "MUTANT",
+      "archiveDigest": "e74fac7bbab4bf9e76d39e43c1ee776e540199937c08d53e414f5f5488012bb5",
+      "semanticFailureCode": "migration-preserves-extension-fields",
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 177,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 101,
+        "exitCode": 0,
+        "status": "fail",
+        "failureCode": "migration-preserves-extension-fields",
+        "detail": "Every migration step must retain unknown nested profile and preferences fields."
+      },
+      "V0": {
+        "verdict": "INCOMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": true,
+        "runtimeMs": 55522,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": null,
+        "blockingFindingCount": null
+      },
+      "A1.1": {
+        "verdict": "INCOMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": true,
+        "runtimeMs": 423185,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": true,
+        "blockingFindingCount": 5
+      }
+    },
+    {
+      "candidateId": "CAND-006",
+      "taskId": "FINAL-04",
+      "truthClass": "MUTANT",
+      "archiveDigest": "1220e618db94b475f44c7c940006bfd655fd38f51ebda937ec9d49d9f3c362cf",
+      "semanticFailureCode": "cache-epoch-publish",
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 174,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 100,
+        "exitCode": 0,
+        "status": "fail",
+        "failureCode": "cache-epoch-publish",
+        "detail": "old success must not become the current cached value"
+      },
+      "V0": {
+        "verdict": "INCOMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": true,
+        "runtimeMs": 55055,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": null,
+        "blockingFindingCount": null
+      },
+      "A1.1": {
+        "verdict": "INCOMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": true,
+        "runtimeMs": 227604,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": true,
+        "blockingFindingCount": 3
+      }
+    },
+    {
+      "candidateId": "CAND-007",
+      "taskId": "FINAL-02",
+      "truthClass": "MUTANT",
+      "archiveDigest": "7d43821cc871ce8ba489ea72cb4cbe1b26678de6de638f19cb4e3547eee0fb95",
+      "semanticFailureCode": "snapshot-record-values",
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 173,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 100,
+        "exitCode": 0,
+        "status": "fail",
+        "failureCode": "snapshot-record-values",
+        "detail": "Continuation must retain deleted records and original nested values after live edits."
+      },
+      "V0": {
+        "verdict": "INCOMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": true,
+        "runtimeMs": 44601,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": null,
+        "blockingFindingCount": null
+      },
+      "A1.1": {
+        "verdict": "UNKNOWN",
+        "correct": false,
+        "explanationIdentifiedDefect": true,
+        "runtimeMs": 352628,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": false,
+        "blockingFindingCount": null
+      }
+    },
+    {
+      "candidateId": "CAND-008",
+      "taskId": "FINAL-05",
+      "truthClass": "MUTANT",
+      "archiveDigest": "f0eca2cbe8c147c69ec4a0744bb76a680eb4bc748d8a3c494e1ce450d089f3f8",
+      "semanticFailureCode": "reserve-compensation-delta",
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 174,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 102,
+        "exitCode": 0,
+        "status": "fail",
+        "failureCode": "reserve-compensation-delta",
+        "detail": "rollback must preserve concurrent stock additions and deductions"
+      },
+      "V0": {
+        "verdict": "INCOMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": true,
+        "runtimeMs": 51879,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": null,
+        "blockingFindingCount": null
+      },
+      "A1.1": {
+        "verdict": "INCOMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": true,
+        "runtimeMs": 269549,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": true,
+        "blockingFindingCount": 1
+      }
+    },
+    {
+      "candidateId": "CAND-009",
+      "taskId": "FINAL-06",
+      "truthClass": "GOLDEN",
+      "archiveDigest": "4e9627a1b59ad0eeac3bd1f74f520d2ae151cb3192e82421632312eab436c864",
+      "semanticFailureCode": null,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 176,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 99,
+        "exitCode": 0,
+        "status": "pass"
+      },
+      "V0": {
+        "verdict": "INCOMPLETE",
+        "correct": false,
+        "explanationIdentifiedDefect": null,
+        "runtimeMs": 44416,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": null,
+        "blockingFindingCount": null
+      },
+      "A1.1": {
+        "verdict": "INCOMPLETE",
+        "correct": false,
+        "explanationIdentifiedDefect": null,
+        "runtimeMs": 302468,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": true,
+        "blockingFindingCount": 2
+      }
+    },
+    {
+      "candidateId": "CAND-010",
+      "taskId": "FINAL-05",
+      "truthClass": "GOLDEN",
+      "archiveDigest": "684404877e46d1dc06bc2640f7ddc583e967675e5ce4ee39aa7d202c1f4001b3",
+      "semanticFailureCode": null,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 175,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 101,
+        "exitCode": 0,
+        "status": "pass"
+      },
+      "V0": {
+        "verdict": "INCOMPLETE",
+        "correct": false,
+        "explanationIdentifiedDefect": null,
+        "runtimeMs": 77345,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": null,
+        "blockingFindingCount": null
+      },
+      "A1.1": {
+        "verdict": "INCOMPLETE",
+        "correct": false,
+        "explanationIdentifiedDefect": null,
+        "runtimeMs": 298062,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": true,
+        "blockingFindingCount": 1
+      }
+    },
+    {
+      "candidateId": "CAND-011",
+      "taskId": "FINAL-03",
+      "truthClass": "GOLDEN",
+      "archiveDigest": "2b81742f3ee3d2608e31393b00cb66a0938bc5d8a1b2989b1978e479ad2d8f39",
+      "semanticFailureCode": null,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 174,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 103,
+        "exitCode": 0,
+        "status": "pass"
+      },
+      "V0": {
+        "verdict": "INCOMPLETE",
+        "correct": false,
+        "explanationIdentifiedDefect": null,
+        "runtimeMs": 69612,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": null,
+        "blockingFindingCount": null
+      },
+      "A1.1": {
+        "verdict": "COMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": null,
+        "runtimeMs": 330929,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": true,
+        "blockingFindingCount": 0
+      }
+    },
+    {
+      "candidateId": "CAND-012",
+      "taskId": "FINAL-01",
+      "truthClass": "GOLDEN",
+      "archiveDigest": "73cdf8c153aa65ba5f8853fc292a306f52035e091b7c5fc6df952dcf898e6cba",
+      "semanticFailureCode": null,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 175,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 102,
+        "exitCode": 0,
+        "status": "pass"
+      },
+      "V0": {
+        "verdict": "COMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": null,
+        "runtimeMs": 96125,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": null,
+        "blockingFindingCount": null
+      },
+      "A1.1": {
+        "verdict": "COMPLETE",
+        "correct": true,
+        "explanationIdentifiedDefect": null,
+        "runtimeMs": 320993,
+        "protocolViolation": false,
+        "reviewError": false,
+        "structuredReviewValid": true,
+        "blockingFindingCount": 0
+      }
+    }
+  ]
+}

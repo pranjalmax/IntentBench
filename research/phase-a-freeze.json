@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0.0",
+  "experimentId": "intentbench-final-holdout-evaluation-v1",
+  "frozenAt": "2026-10-05T23:22:49.462Z",
+  "truthRevealed": false,
+  "arms": {
+    "V0": {
+      "manifestHash": "6c66a6edd359f1d1a5281990e98618b82fcf9021b07284b86bbc96837419fd66",
+      "completedAt": "2026-10-04T11:33:02.789Z"
+    },
+    "A1.1": {
+      "manifestHash": "af6cc78ee4c3c8f1a96a1010b928b52dfd0165523cd0259ec5473faa51c2cebf",
+      "completedAt": "2026-10-05T23:22:49.459Z"
+    }
+  }
+}

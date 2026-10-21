@@ -1,0 +1,268 @@
+{
+  "schemaVersion": "1.0.0",
+  "experimentId": "intentbench-hard-dev-verification-a1.0",
+  "iteration": "A1.0",
+  "protocolCommit": "3cc9edd197a5e050fe4f02e9dfc962550aea1b46",
+  "phaseACompletedAt": "2026-09-30T23:19:45.328Z",
+  "truthRevealStartedAt": "2026-09-30T23:19:49.297Z",
+  "completedAt": "2026-09-30T23:19:51.567Z",
+  "hardDevHashBefore": "77a54f4802944cec339402a7f9c5db7e9b4927fa06a57cfea5d8b85da92f30f5",
+  "hardDevHashAfter": "77a54f4802944cec339402a7f9c5db7e9b4927fa06a57cfea5d8b85da92f30f5",
+  "runs": [
+    {
+      "candidateId": "CAND-001",
+      "taskId": "HARD-03",
+      "truthClass": "MUTANT",
+      "verdict": "INCOMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 179.31560000000002,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 105.92850000000004,
+        "exitCode": 0,
+        "status": "fail",
+        "failureCode": "durable-provider-identity",
+        "detail": "Retry after external success and transport ambiguity must not create a second charge."
+      },
+      "structuredReview": {
+        "valid": true,
+        "requirementCount": 31,
+        "evidenceCount": 7,
+        "blockingFindingCount": 1,
+        "advisoryCount": 0,
+        "reproducedBlockingCount": 1,
+        "gateError": null
+      },
+      "protocolViolation": false,
+      "wallClockDurationMs": 242337
+    },
+    {
+      "candidateId": "CAND-002",
+      "taskId": "HARD-01",
+      "truthClass": "GOLDEN",
+      "verdict": "UNKNOWN",
+      "correct": false,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 182.156,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 103.21429999999998,
+        "exitCode": 0,
+        "status": "pass"
+      },
+      "structuredReview": {
+        "valid": false,
+        "requirementCount": 0,
+        "evidenceCount": 0,
+        "blockingFindingCount": 0,
+        "advisoryCount": 0,
+        "reproducedBlockingCount": 0,
+        "gateError": "PUBLIC_CONFIG is not allowed for R2"
+      },
+      "protocolViolation": false,
+      "wallClockDurationMs": 316920
+    },
+    {
+      "candidateId": "CAND-003",
+      "taskId": "HARD-04",
+      "truthClass": "MUTANT",
+      "verdict": "UNKNOWN",
+      "correct": false,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 175.36419999999998,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 102.26850000000013,
+        "exitCode": 0,
+        "status": "fail",
+        "failureCode": "config-preserves-falsy",
+        "detail": "Explicit CLI zero and false must override every lower-precedence value."
+      },
+      "structuredReview": {
+        "valid": false,
+        "requirementCount": 0,
+        "evidenceCount": 0,
+        "blockingFindingCount": 0,
+        "advisoryCount": 0,
+        "reproducedBlockingCount": 0,
+        "gateError": "VISIBLE_TEST is not allowed for R4"
+      },
+      "protocolViolation": false,
+      "wallClockDurationMs": 241428
+    },
+    {
+      "candidateId": "CAND-004",
+      "taskId": "HARD-02",
+      "truthClass": "GOLDEN",
+      "verdict": "UNKNOWN",
+      "correct": false,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 179.46979999999985,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 102.89369999999985,
+        "exitCode": 0,
+        "status": "pass"
+      },
+      "structuredReview": {
+        "valid": false,
+        "requirementCount": 0,
+        "evidenceCount": 0,
+        "blockingFindingCount": 0,
+        "advisoryCount": 0,
+        "reproducedBlockingCount": 0,
+        "gateError": "PUBLIC_CONFIG is not allowed for R2"
+      },
+      "protocolViolation": false,
+      "wallClockDurationMs": 281623
+    },
+    {
+      "candidateId": "CAND-005",
+      "taskId": "HARD-01",
+      "truthClass": "MUTANT",
+      "verdict": "INCOMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 179.0474999999999,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 103.62929999999983,
+        "exitCode": 0,
+        "status": "fail",
+        "failureCode": "nested-resource-binding",
+        "detail": "Reads must bind the document to the exact authorized tenant and project."
+      },
+      "structuredReview": {
+        "valid": true,
+        "requirementCount": 36,
+        "evidenceCount": 15,
+        "blockingFindingCount": 2,
+        "advisoryCount": 0,
+        "reproducedBlockingCount": 2,
+        "gateError": null
+      },
+      "protocolViolation": false,
+      "wallClockDurationMs": 309488
+    },
+    {
+      "candidateId": "CAND-006",
+      "taskId": "HARD-03",
+      "truthClass": "GOLDEN",
+      "verdict": "COMPLETE",
+      "correct": true,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 174.31650000000013,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 101.22579999999994,
+        "exitCode": 0,
+        "status": "pass"
+      },
+      "structuredReview": {
+        "valid": true,
+        "requirementCount": 28,
+        "evidenceCount": 11,
+        "blockingFindingCount": 0,
+        "advisoryCount": 0,
+        "reproducedBlockingCount": 0,
+        "gateError": null
+      },
+      "protocolViolation": false,
+      "wallClockDurationMs": 301333
+    },
+    {
+      "candidateId": "CAND-007",
+      "taskId": "HARD-02",
+      "truthClass": "MUTANT",
+      "verdict": "UNKNOWN",
+      "correct": false,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 179.2594999999999,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 104.36020000000008,
+        "exitCode": 0,
+        "status": "fail",
+        "failureCode": "atomic-version-boundary",
+        "detail": "A prepared request must lose when another service commits its expected version during preparation."
+      },
+      "structuredReview": {
+        "valid": false,
+        "requirementCount": 0,
+        "evidenceCount": 0,
+        "blockingFindingCount": 0,
+        "advisoryCount": 0,
+        "reproducedBlockingCount": 0,
+        "gateError": "PUBLIC_CONFIG is not allowed for R2"
+      },
+      "protocolViolation": false,
+      "wallClockDurationMs": 276782
+    },
+    {
+      "candidateId": "CAND-008",
+      "taskId": "HARD-04",
+      "truthClass": "GOLDEN",
+      "verdict": "UNKNOWN",
+      "correct": false,
+      "visibleTests": {
+        "status": "pass",
+        "durationMs": 187.13470000000007,
+        "exitCode": 0
+      },
+      "semanticOracle": {
+        "durationMs": 99.8469,
+        "exitCode": 0,
+        "status": "pass"
+      },
+      "structuredReview": {
+        "valid": false,
+        "requirementCount": 0,
+        "evidenceCount": 0,
+        "blockingFindingCount": 0,
+        "advisoryCount": 0,
+        "reproducedBlockingCount": 0,
+        "gateError": "PACKAGE_CONTRACT is not allowed for R2"
+      },
+      "protocolViolation": false,
+      "wallClockDurationMs": 334645
+    }
+  ],
+  "metrics": {
+    "classificationAccuracy": 0.375,
+    "correctCount": 3,
+    "candidateCount": 8,
+    "mutantDetectionRate": 0.5,
+    "mutantsDetected": 2,
+    "mutantCount": 4,
+    "goldenAcceptanceRate": 0.25,
+    "goldensAccepted": 1,
+    "goldenCount": 4,
+    "falseAcceptRate": 0,
+    "falseAccepts": 0,
+    "falseRejectRate": 0,
+    "falseRejects": 0,
+    "protocolViolations": 0,
+    "unknownVerdicts": 5,
+    "visiblePasses": 8,
+    "oracleErrors": 0,
+    "reviewErrors": 0,
+    "structuredReviewErrors": 5,
+    "reproducedBlockingFindings": 3,
+    "totalRuntimeMs": 2304556
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.0.0",
+  "files": [
+    {
+      "path": "research/results/dev-baselines.json",
+      "sha256": "9a7499f4685fd083aa643d305ca22873261268e51ec823c45f8c245d3314063c"
+    },
+    {
+      "path": "research/results/dev-verification-baseline.json",
+      "sha256": "6f19966b598853f8d2123430e10af378cc85141fd073a928865b80a2b199a278"
+    },
+    {
+      "path": "research/results/hard-dev-verification-baseline.json",
+      "sha256": "c38a3989fdba6fdb6238f689d9c046b692507bd9cfa988f6fd3bf8bc59ca79fa"
+    },
+    {
+      "path": "research/results/hard-dev-verification-a1.json",
+      "sha256": "e1343fd00f1043c4bdf9f8b2bfa28c7687d70d977aaa3084254aad682a89fefe"
+    },
+    {
+      "path": "research/results/hard-dev-verification-a1.1.json",
+      "sha256": "cd9418a79b9ab78b98d314d256910d5213e6cc1bb62e60b98eacc9b2ad69a27e"
+    },
+    {
+      "path": "research/results/final-holdout-evaluation.json",
+      "sha256": "57fe6c567d561958c68f6ae24c0bdf0ee6f3236f6df1fa21f811fb609bb39b21"
+    },
+    {
+      "path": "trajectories/final-holdout-evaluation/V0/CAND-003/trace.jsonl",
+      "sha256": "ca68a674696895d204965667d106e352631c6669ecec9370c502f4580209f601"
+    },
+    {
+      "path": "trajectories/final-holdout-evaluation/V0/CAND-007/trace.jsonl",
+      "sha256": "0863097912ff319370a3199054616de4075bd373bdf42f161311ed6b5c653df2"
+    },
+    {
+      "path": "trajectories/final-holdout-evaluation/V0/CAND-011/trace.jsonl",
+      "sha256": "19d607135314a92cddbf6995c0c1218a71f764f423bfefc72590b2edf98d5528"
+    },
+    {
+      "path": "trajectories/final-holdout-evaluation/A1.1/CAND-003/trace.jsonl",
+      "sha256": "bbccc83875a0f194453fab4750b10ce6f54e462e630b97bda0ad8568a089a841"
+    },
+    {
+      "path": "trajectories/final-holdout-evaluation/A1.1/CAND-007/trace.jsonl",
+      "sha256": "1f59a0259a8cc6887af0d10758dcf215087f5c5afca33de87914f1340bf847c2"
+    },
+    {
+      "path": "trajectories/final-holdout-evaluation/A1.1/CAND-011/trace.jsonl",
+      "sha256": "af2e61a83f6b70e0854353806938b52356d7ceeb27d1f70cb352e0af21660fd7"
+    }
+  ]
+}

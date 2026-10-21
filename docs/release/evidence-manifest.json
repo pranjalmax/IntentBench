@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "1.0.0",
+  "mode": "RECORDED_EVIDENCE",
+  "acceptanceRun": "run_8bfa56d7c07f47d4be2f88aa56e20e68",
+  "hashPolicy": "PNG exact bytes; text canonical UTF-8 with CRLF converted to LF only",
+  "assets": [
+    {
+      "path": "docs/release/assets/acceptance-desktop.png",
+      "sha256": "38fde2dc7df098bef1694ebe7743359b54d9bdbd227e944b9206ba6ed6210eee",
+      "canonicalText": false,
+      "provenance": "Genuine M4 acceptance record, export or saved-report screenshot"
+    },
+    {
+      "path": "docs/release/assets/acceptance-mobile.png",
+      "sha256": "dc82715e41bc51017527e542abca39afb4338487e33693621c3660d4a4aad903",
+      "canonicalText": false,
+      "provenance": "Genuine M4 acceptance record, export or saved-report screenshot"
+    },
+    {
+      "path": "docs/release/assets/snapshot-desktop.png",
+      "sha256": "47680729ec70f421f022b7eb1ff75e35c123ddb7f623a8adf0f9a66ca36e5f12",
+      "canonicalText": false,
+      "provenance": "Actual saved notes snapshot inspector"
+    },
+    {
+      "path": "docs/release/assets/research-desktop.png",
+      "sha256": "10d9d0d4d195e748b37224c8cc6ab2ba3b8673a49619045a258474416ebade80",
+      "canonicalText": false,
+      "provenance": "Actual local research REPLAY view"
+    },
+    {
+      "path": "docs/release/evidence/acceptance-report.json",
+      "sha256": "891c0028606007cd16f40084b41f6bd47ad6ca9b17641bdb755ea79d04a64693",
+      "canonicalText": true,
+      "provenance": "Genuine M4 acceptance record, export or saved-report screenshot"
+    },
+    {
+      "path": "docs/release/evidence/acceptance-report.md",
+      "sha256": "9f337376df3c3dbd690358b63ddbb6a794046d0757df0f8594ffe5cfc6501567",
+      "canonicalText": true,
+      "provenance": "Genuine M4 acceptance record, export or saved-report screenshot"
+    },
+    {
+      "path": "docs/release/evidence/acceptance-checkpoint.json",
+      "sha256": "a2fcfef27c53805adda040c894726072c13d80bc51a2d8d2982c6cd4768121dd",
+      "canonicalText": true,
+      "provenance": "Genuine M4 acceptance record, export or saved-report screenshot"
+    }
+  ],
+  "traces": [
+    {
+      "path": "trajectories/final-holdout-evaluation/V0/CAND-003/trace.jsonl",
+      "sha256": "ca68a674696895d204965667d106e352631c6669ecec9370c502f4580209f601"
+    },
+    {
+      "path": "trajectories/final-holdout-evaluation/V0/CAND-007/trace.jsonl",
+      "sha256": "0863097912ff319370a3199054616de4075bd373bdf42f161311ed6b5c653df2"
+    },
+    {
+      "path": "trajectories/final-holdout-evaluation/V0/CAND-011/trace.jsonl",
+      "sha256": "19d607135314a92cddbf6995c0c1218a71f764f423bfefc72590b2edf98d5528"
+    },
+    {
+      "path": "trajectories/final-holdout-evaluation/A1.1/CAND-003/trace.jsonl",
+      "sha256": "bbccc83875a0f194453fab4750b10ce6f54e462e630b97bda0ad8568a089a841"
+    },
+    {
+      "path": "trajectories/final-holdout-evaluation/A1.1/CAND-007/trace.jsonl",
+      "sha256": "1f59a0259a8cc6887af0d10758dcf215087f5c5afca33de87914f1340bf847c2"
+    },
+    {
+      "path": "trajectories/final-holdout-evaluation/A1.1/CAND-011/trace.jsonl",
+      "sha256": "af2e61a83f6b70e0854353806938b52356d7ceeb27d1f70cb352e0af21660fd7"
+    }
+  ]
+}
