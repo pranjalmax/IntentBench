@@ -55,7 +55,7 @@ to LF only, matching the tested research-reader policy; no wording is rewritten.
 The pre-existing [research manifest](../../packages/product-service/research-manifest.json)
 pins the six published result files and six reviewed final traces. Other private-archive trajectories are excluded.
 
-Reproduce the read-only audit with `node scripts/release-audit.mjs` after building
-the existing TypeScript utilities. The audit verifies paths/hashes and JSONL shape,
-not the truth of model reasoning. [Security scope](SECURITY.md) explains remaining
+Reproduce the read-only audit with `npm run audit:public`. It verifies the explicit
+file allowlist, paths, hashes and privacy patterns, not the truth of model reasoning.
+[Security scope](SECURITY.md) explains remaining
 publication and privacy limitations.
