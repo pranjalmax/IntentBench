@@ -89,8 +89,10 @@ upgrade, host candidate-code execution or security-boundary relaxation was used.
 
 Completed checks cover clean strict installation, full and production audits,
 peer-graph validity, formatting/lint/typecheck, complete tests and production build.
-The refreshed recorded-browser check is blocked by a tool-policy denial of preview
-launch; it requires an operator-started local preview. See [validation](VALIDATION.md).
+The refreshed recorded-browser check passed after the operator started the existing
+local preview: desktop/mobile rendering, REPLAY navigation, keyboard activation,
+disabled intake, zero axe violations and no console/page errors. No write requests,
+model calls or Docker startup occurred. See [validation](VALIDATION.md).
 The security trigger
 is the registry's vulnerable version finding, plus deterministic rejection of those
 versions; no claim is made that every network exploit was independently replayed.

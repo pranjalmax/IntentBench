@@ -72,7 +72,7 @@
     },
     {
       "path": "docs/release/DEPENDENCIES.md",
-      "sha256": "98a106b4eb31472f09d37cde39f9788509b43a6dd738ea66b52390d3c98a7b7e",
+      "sha256": "30497c3b5118b4bee644fc3c63dd91d15125f1f12b2dcd4848232fb04d5b942b",
       "canonicalText": true
     },
     {
@@ -102,7 +102,7 @@
     },
     {
       "path": "docs/release/VALIDATION.md",
-      "sha256": "e19b6eee3cfa72625b9c04eaeb5aa5111a34a3fb67bae694b9a0e2ad7079cb71",
+      "sha256": "b660a08ed4613c47a4cee134acadb0d4fd4555dcb14f163ca7b5ff073a5ad205",
       "canonicalText": true
     },
     {
