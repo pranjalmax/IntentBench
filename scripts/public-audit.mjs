@@ -5,7 +5,13 @@ import process from "node:process";
 import path from "node:path";
 import { readVerifiedFile } from "../dist/packages/product-service/src/read-only-files.js";
 import { frozenA11Profile } from "../dist/packages/product-core/src/verifier-adapter.js";
-import { isPublishablePath, scanText, localLinks, resolveLocalLink } from "./public-audit-lib.mjs";
+import {
+  isPublishablePath,
+  scanText,
+  localLinks,
+  resolveLocalLink,
+  assertDependencyPolicy,
+} from "./public-audit-lib.mjs";
 
 const root = process.cwd();
 const git = (...args) =>
@@ -18,6 +24,7 @@ const bytes = async (file, hash, canonical = false) =>
   readVerifiedFile(root, file, 16 * 1024 * 1024, hash, canonical);
 const json = async (file) => JSON.parse((await bytes(file)).toString("utf8"));
 const manifest = await json("public-file-manifest.json");
+assertDependencyPolicy(await json("package.json"), await json("package-lock.json"));
 const actual = git("ls-files", "--cached", "--others", "--exclude-standard", "-z")
   .split("\0")
   .filter(Boolean)

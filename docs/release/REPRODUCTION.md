@@ -3,13 +3,16 @@
 From a fresh checkout with Node 22.20.0/npm 10.9.3:
 
 ```sh
-npm ci --ignore-scripts --no-audit --no-fund
+npm ci --ignore-scripts --strict-peer-deps --no-audit --no-fund
 npm run format:check
 npm run lint
 npm run typecheck
 npm test
 npm run product:build
 npm run audit:public
+npm ls --all
+npm audit
+npm audit --omit=dev
 ```
 
 These commands do not require Docker or authentication and make no model request.

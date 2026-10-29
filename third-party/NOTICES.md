@@ -1735,13 +1735,13 @@ SOFTWARE.
 
 ## 04575fc5bfae19a9b63100f8691f901a2e15a399011ac02db435a9ef27295551
 
-- @vitest/expect@4.1.11 (LICENSE)
-- @vitest/mocker@4.1.11 (LICENSE)
-- @vitest/pretty-format@4.1.11 (LICENSE)
-- @vitest/runner@4.1.11 (LICENSE)
-- @vitest/snapshot@4.1.11 (LICENSE)
-- @vitest/spy@4.1.11 (LICENSE)
-- @vitest/utils@4.1.11 (LICENSE)
+- @vitest/expect@4.1.12 (LICENSE)
+- @vitest/mocker@4.1.12 (LICENSE)
+- @vitest/pretty-format@4.1.12 (LICENSE)
+- @vitest/runner@4.1.12 (LICENSE)
+- @vitest/snapshot@4.1.12 (LICENSE)
+- @vitest/spy@4.1.12 (LICENSE)
+- @vitest/utils@4.1.12 (LICENSE)
 
 ~~~text
 MIT License
@@ -2710,7 +2710,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 
 ## b181da80336ff9dd1043fc8be1a764d7382363433319aa872e4d2cb5ce2a3066
 
-- chai@6.2.2 (LICENSE)
+- chai@6.3.0 (LICENSE)
 
 ~~~text
 MIT License
@@ -5669,7 +5669,7 @@ THE SOFTWARE.
 ## cebc084d54e6dd99e53292ddb4bc1cdb63d9bfcd9ce438fe3aa6eb106d79e2ea
 
 - tinybench@2.9.0 (LICENSE)
-- tinyrainbow@3.1.1 (LICENCE)
+- tinyrainbow@3.2.0 (LICENCE)
 
 ~~~text
 MIT License
@@ -5946,7 +5946,7 @@ END OF TERMS AND CONDITIONS
 
 ## a6db8096b2707bc0102d256917d4d33f298ba36d8c3f25de067a2b5bb379db27
 
-- undici@7.30.0 (LICENSE)
+- undici@7.30.1 (LICENSE)
 - undici-types@8.3.0 (LICENSE)
 
 ~~~text
@@ -8268,7 +8268,7 @@ Repository: https://github.com/sveltejs/zimmerframe
 
 ## 881d660c26831481b697e39724d4a35c9f86e07b67156d4aeb693a0b39910435
 
-- vitest@4.1.11 (LICENSE.md)
+- vitest@4.1.12 (LICENSE.md)
 
 ~~~text
 # Vitest core license

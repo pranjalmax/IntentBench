@@ -33,12 +33,13 @@ The frozen verifier gate/profile and all published scores/trajectories are uncha
 
 ## Measured result / limits
 
-The October 29 registry refresh reports three affected development-package entries
-(one high, two moderate). Patch resolution hit an npm peer-graph error; no unsafe
-bypass or lockfile fabrication was applied. Dependency remediation and renewed
-clean-install validation remain publication blockers. The October 21 zero-findings
-audit was a historical snapshot, not the current security status. See the
-[audit](docs/release/AUDIT.md).
+The October 29 dependency remediation upgrades Vitest and its matching helpers to
+4.1.12 and jsdom's Undici to 7.30.1. Supported npm overrides fix the reproduced
+peer-resolution crash and select the compatible Undici patch. No production package
+version changed. Full and production-only registry audits report zero findings.
+Regression checks reject the original vulnerable versions and mixed test cohorts;
+CI now uses strict peer validation and audits all severities. Exact advisories and
+limitations are in the [dependency report](docs/release/DEPENDENCIES.md).
 
 Final accuracy remains **V0 8/12, A1.1 8/12**. A1.1 accepted one extra golden but had
 one UNKNOWN and 5.175× review runtime; no accuracy improvement is claimed. COMPLETE

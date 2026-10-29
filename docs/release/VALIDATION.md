@@ -1,21 +1,25 @@
 # Public edition validation
 
-Validated on Windows with Node 22.20.0, npm 10.9.3 and installed Chrome on
-October 21, 2026. A separate local clone with no hardlinks and a fresh install
+Non-browser checks validated on Windows with Node 22.20.0 and npm 10.9.3 on
+October 29, 2026. A separate disposable clone with no hardlinks and a fresh install
 was used; the original private workspace was not the execution root.
 
-| Check                                          | Result                                                                                            |
-| ---------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `npm ci --ignore-scripts --no-audit --no-fund` | PASS, dedicated clean cache                                                                       |
-| Formatting, lint, typecheck                    | PASS                                                                                              |
-| Complete tests                                 | PASS: 102 Vitest tests across 24 files, plus 5 Node audit tests                                   |
-| Production TypeScript/Vite build               | PASS, no oracle compilation                                                                       |
-| Explicit public-file/hash/privacy audit        | PASS: no credential/personal-path pattern findings                                                |
-| Frozen A1.1 prompt/config/gate bytes           | Match all three retained identities                                                               |
-| Local authored documentation links             | PASS: 78 file targets resolve                                                                     |
-| Registry dependency audit                      | Zero known vulnerabilities after two compatible development-only patches                          |
-| Recorded browser journey, 1440px and 390px     | PASS: 12 historical candidate rows, authentic selected REPLAY, disabled uploads                   |
-| Accessibility / browser errors                 | Zero axe WCAG A/AA violations, page errors, console errors or page overflow in the checked states |
+| Check                                                             | Result                                                                                                        |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `npm ci --ignore-scripts --strict-peer-deps --no-audit --no-fund` | PASS, dedicated cache; lifecycle scripts disabled                                                             |
+| Formatting, lint, typecheck                                       | PASS                                                                                                          |
+| Complete tests                                                    | PASS: 102 Vitest tests and 10 Node audit tests                                                                |
+| Production TypeScript/Vite build                                  | PASS, no oracle compilation                                                                                   |
+| Explicit public-file/hash/privacy audit                           | PASS: no credential/personal-path pattern findings                                                            |
+| Frozen A1.1 prompt/config/gate bytes                              | Match all three retained identities                                                                           |
+| Local authored documentation links                                | PASS: 83 file targets resolve                                                                                 |
+| Registry dependency audit                                         | Zero findings after Vitest/mocker 4.1.12 and jsdom/Undici 7.30.1 updates                                      |
+| Recorded browser journey, 1440px and 390px                        | BLOCKED: execution policy rejected launching the local preview; awaiting an operator-started recorded preview |
+| Accessibility / browser errors                                    | Not revalidated for this dependency update; October 21 results below are historical only                      |
+
+The October 21 browser validation passed at 1440px/390px with zero axe A/AA,
+console/page-error or page-overflow findings. That prior check is not a new browser
+pass for this dependency change. No screenshot or activity was fabricated.
 
 Browser validation initially exposed an accessibility-harness context setup error
 and a missing exported favicon. Both were corrected in this public edition.
@@ -29,11 +33,10 @@ semantic oracle execution or model request was used for these checks.
 
 ## Unverified / approval limits
 
-- The October 29 registry refresh supersedes the October 21 dependency-audit row:
-  three development-package entries are currently affected (one high, two moderate).
-  Supported patch resolution was blocked by an npm peer-graph error. The validated
-  dependency tree is unchanged; see the [current audit](AUDIT.md). Publication is
-  blocked pending remediation and a fresh install/test/build check.
+- The new local preview launch was rejected by the tool execution policy; no
+  alternate process-launch route was used. Browser checks require an operator-started
+  recorded-only preview. The npm findings are remediated, but full validation remains
+  incomplete until that check is performed.
 
 - GitHub-hosted CI and non-Windows local execution have not been run. The minimal
   CI workflow is prepared, not claimed green on GitHub.

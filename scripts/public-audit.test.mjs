@@ -1,7 +1,47 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { localLinks, resolveLocalLink, scanText, isPublishablePath } from "./public-audit-lib.mjs";
+import * as audit from "./public-audit-lib.mjs";
+
+const reviewedManifest = JSON.parse(readFileSync(new URL("../package.json", import.meta.url)));
+const reviewedLock = JSON.parse(readFileSync(new URL("../package-lock.json", import.meta.url)));
+
+test("the reviewed dependency graph accepts the supported patch cohort", () => {
+  assert.equal(typeof audit.assertDependencyPolicy, "function");
+  audit.assertDependencyPolicy(reviewedManifest, reviewedLock);
+});
+
+test("the dependency gate rejects loss of the peer-resolution constraint", () => {
+  assert.equal(typeof audit.assertDependencyPolicy, "function");
+  const manifest = structuredClone(reviewedManifest);
+  delete manifest.overrides.vitest;
+  assert.throws(() => audit.assertDependencyPolicy(manifest, reviewedLock));
+});
+
+test("the dependency gate rejects a vulnerable mocker despite a patched parent", () => {
+  assert.equal(typeof audit.assertDependencyPolicy, "function");
+  const lock = structuredClone(reviewedLock);
+  lock.packages["node_modules/@vitest/mocker"].version = "4.1.11";
+  assert.throws(() => audit.assertDependencyPolicy(reviewedManifest, lock));
+});
+
+test("the dependency gate rejects the original vulnerable Undici version", () => {
+  assert.equal(typeof audit.assertDependencyPolicy, "function");
+  const lock = structuredClone(reviewedLock);
+  lock.packages["node_modules/undici"].version = "7.30.0";
+  assert.throws(() => audit.assertDependencyPolicy(reviewedManifest, lock));
+});
+
+test("a patched top-level Undici does not hide a vulnerable nested copy", () => {
+  const lock = structuredClone(reviewedLock);
+  lock.packages["node_modules/jsdom/node_modules/undici"] = {
+    ...lock.packages["node_modules/undici"],
+    version: "7.30.0",
+  };
+  assert.throws(() => audit.assertDependencyPolicy(reviewedManifest, lock));
+});
 
 test("sealed/internal/credential paths cannot enter a public allowlist", () => {
   for (const name of [

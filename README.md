@@ -15,10 +15,10 @@ A local verification workbench · public-source candidate · license pending app
 _Recorded genuine acceptance evidence—not a live session or a database preloaded
 into this export. COMPLETE is a verifier judgment, not guaranteed correctness._
 
-**Release status:** unpublished; license/rights approval and remediation of the
-October 29 development-dependency audit findings are pending. See the
-[release audit](docs/release/AUDIT.md). The recorded-only source build is validated;
-this is not publication clearance.
+**Release status:** unpublished; license/rights approval remains pending. The
+October 29 npm dependency findings have been remediated with supported patch
+updates. See the [dependency report](docs/release/DEPENDENCIES.md) and
+[release audit](docs/release/AUDIT.md). This is not publication clearance.
 
 ## Inspect the claim behind the conclusion
 

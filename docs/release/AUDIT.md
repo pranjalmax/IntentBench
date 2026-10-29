@@ -29,20 +29,19 @@ packages: brace-expansion and fast-uri. Compatible patches 5.0.12 and 3.1.9 were
 applied only to this export. The subsequent October 21 registry audit reported zero
 known vulnerabilities. That result is historical, not the current release-security status.
 
-**October 29 refresh: publication remains blocked.** The registry now reports three
-affected development-package entries: `undici` (high), `@vitest/mocker` (moderate),
-and its parent `vitest` (moderate). Upstream patches include
-[Vitest/mocker 4.1.12](https://github.com/vitest-dev/vitest/security/advisories/GHSA-xp26-3454-mjgp)
-and [Undici 7.30.1](https://github.com/nodejs/undici/security/advisories/GHSA-2m5v-pch6-74hx).
-These are upstream reports, not a claim that this recorded-only application has
-been exploited. The pinned source dependency tree has not been silently changed.
+**October 29 remediation:** the initial refresh reported three affected development
+package entries, representing ten unique upstream advisories. Vitest/mocker now
+use 4.1.12 and jsdom's Undici uses 7.30.1. The updated tree reports zero registry
+findings. Production dependency versions are unchanged. This is not a claim that
+every network exploit or the system/runtime image has been independently tested.
 
-A narrow patch-resolution attempt failed with npm's peer-graph `edgesOut` error
-using both npm 10.9.3 and an isolated npm 10.9.9 invocation. No global npm upgrade,
-peer-check bypass, forced major update or manual lockfile rewrite was applied.
-The previously validated dependency tree is retained. Supported remediation,
-updated dependency notices and a new clean-install validation are required before
-publication. CI's high-severity audit gate is expected to block this candidate.
+The npm `edgesOut` crash was reproduced and traced to a detached Vitest 5 node
+encountered through optional wildcard peer resolution. A supported override matching
+the exact direct Vitest 4 pin removes that path without skipping peer checks.
+An equally supported jsdom-scoped override selects Undici's compatible patch.
+Strict installation and the complete installed graph are validated; no global npm
+change, `--force`, legacy-peer mode, audit suppression or manual lockfile rewrite
+was used. See the [exact advisories, dependency chains, root cause and limits](DEPENDENCIES.md).
 
 [License inventory](../../third-party/licenses.json) records all 266 locked package
 locations with no missing license declarations. There are 216 installed locations
@@ -60,7 +59,8 @@ grant is made by collecting notices. See [license decision](../../LICENSE-DECISI
 The [workflow](../../.github/workflows/ci.yml) uses SHA-pinned official checkout/setup
 actions, read-only permissions, no persisted checkout credentials, no secrets and
 no `pull_request_target`. It installs with lifecycle scripts disabled, then runs
-format/lint/typecheck/tests/build, public-file audit and a dependency audit.
+format/lint/typecheck/tests/build, public-file audit, strict peer-graph checks,
+and full plus production-only registry audits without a severity threshold.
 No model, Docker, deployment, package publishing or artifact upload job is configured.
 The [GitHub secure-use reference](https://docs.github.com/en/actions/reference/security/secure-use)
 informs these controls. GitHub-hosted execution remains unverified until publication
@@ -70,7 +70,6 @@ is separately approved; local fresh-clone checks are distinct evidence.
 
 - Owner approval of project license, copyright identity and publication rights for
   source, documentation, screenshots and sanitized model output.
-- Remediation and revalidation of the October 29 dependency audit findings above.
 - Separate approval before any public repository or deployment action.
 - Exact pinned live-image distribution, SBOM/CVE/notice review and fresh isolated
   live execution were not performed. A rebuilt image may not match and is refused.
