@@ -2,7 +2,8 @@
 
 This is a clean, independently initialized source export, not the internal research
 repository or its Git history. No remote, release tag, public repository or deployment
-is created. Project licensing remains pending in [LICENSE-DECISION.md](LICENSE-DECISION.md).
+is created. IntentBench is licensed under the [MIT License](LICENSE), approved by
+the owner with Copyright (c) 2026 Pranjal Srivastava. [License details](LICENSE-DECISION.md).
 
 ## Included
 

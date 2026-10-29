@@ -1,7 +1,7 @@
 # Public export audit
 
 This candidate is prepared for owner review, **not cleared for publication**.
-Project licensing has not been chosen or applied. No remote, repository visibility
+The owner-approved [MIT License](../../LICENSE) is applied. No remote, repository visibility
 change, GitHub publication or deployment occurs during preparation.
 
 ## Export boundary
@@ -68,8 +68,8 @@ is separately approved; local fresh-clone checks are distinct evidence.
 
 ## Remaining blockers / scope limits
 
-- Owner approval of project license, copyright identity and publication rights for
-  source, documentation, screenshots and sanitized model output.
+- Third-party and model-output publication rights remain subject to applicable
+  upstream/account terms; the project MIT grant does not replace those terms.
 - Separate approval before any public repository or deployment action.
 - Exact pinned live-image distribution, SBOM/CVE/notice review and fresh isolated
   live execution were not performed. A rebuilt image may not match and is refused.

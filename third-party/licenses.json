@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "scope": "All lockfile package locations, including optional platform dependencies; root project license excluded",
-  "projectLicense": "PENDING_APPROVAL",
+  "projectLicense": "MIT",
   "counts": {
     "MIT": 207,
     "MPL-2.0": 14,

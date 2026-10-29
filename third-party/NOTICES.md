@@ -1,7 +1,7 @@
 # Third-party notices
 
-Upstream dependency notices only. This does not grant or select an IntentBench project license.
-Project licensing remains pending approval. Optional packages not installed on this platform are listed in licenses.json; their source notices are not bundled here.
+Upstream dependency notices only. IntentBench's project license is MIT; see ../LICENSE.
+Dependency licenses and notices below remain unchanged and apply separately. Optional packages not installed on this platform are listed in licenses.json; their source notices are not bundled here.
 
 ## 326ff3850062286003ff4cbdaa8f61764e128f9a6532431bccf97e4e2bd75059
 

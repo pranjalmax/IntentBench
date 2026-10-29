@@ -4,7 +4,7 @@
 
 ### Trace the verdict. Inspect the evidence.
 
-A local verification workbench · public-source candidate · license pending approval
+A local verification workbench · public-source candidate · MIT licensed
 
 [Setup](docs/release/SETUP.md) · [Demo](docs/release/DEMO.md) · [Research](docs/release/RESEARCH.md) · [Security](docs/release/SECURITY.md)
 
@@ -15,7 +15,7 @@ A local verification workbench · public-source candidate · license pending app
 _Recorded genuine acceptance evidence—not a live session or a database preloaded
 into this export. COMPLETE is a verifier judgment, not guaranteed correctness._
 
-**Release status:** unpublished; license/rights approval remains pending. The
+**Release status:** unpublished; the [MIT License](LICENSE) is approved and applied. The
 October 29 npm dependency findings have been remediated with supported patch
 updates. See the [dependency report](docs/release/DEPENDENCIES.md) and
 [release audit](docs/release/AUDIT.md). This is not publication clearance.
@@ -89,7 +89,7 @@ the advanced system's failure. The original saved database is intentionally abse
 - [Local setup](docs/release/SETUP.md) and [no-credit reproduction](docs/release/REPRODUCTION.md)
 - [Architecture](docs/release/ARCHITECTURE.md), [security](docs/release/SECURITY.md), [demo](docs/release/DEMO.md)
 - [Release notes](RELEASE-NOTES.md), [audit](docs/release/AUDIT.md), [public file manifest](public-file-manifest.json)
-- [License decision awaiting approval](LICENSE-DECISION.md), [third-party notices](third-party/NOTICES.md)
+- [MIT License](LICENSE), [license decision](LICENSE-DECISION.md), [third-party notices](third-party/NOTICES.md)
 
 This independently initialized export contains no original Git objects, sealed
 oracles/truth/variants, authentication or private local database. Retrospective

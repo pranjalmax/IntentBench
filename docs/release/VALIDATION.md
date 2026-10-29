@@ -50,8 +50,9 @@ semantic oracle execution or model request was used for these checks.
 - Automated scanning and visual screenshot inspection cannot prove the absence
   of all possible sensitive information. Ignored credential stores were excluded
   opaquely and never opened for this audit.
-- Owner license/copyright/evidence-rights approval and separate publication approval
-  are still required. No project LICENSE has been applied.
+- The owner-approved [MIT License](../../LICENSE) is applied with the provided
+  copyright notice. Separate publication approval and applicable third-party or
+  model-output rights review are still required.
 
 Both historical final scores remain **V0 8/12 and A1.1 8/12**. No experimental
 trajectory, benchmark, gate, prompt or result was tuned or rerun.

@@ -104,5 +104,5 @@ servers loopback-only, do not run untrusted repository tests on the host, and do
 enable live mode without its exact validated isolation prerequisites.
 
 Hosted GitHub/Linux execution is not claimed: no remote, push or publication was
-authorized. License/rights approval and documented binary/image notice review remain
+authorized. Separate publication approval and documented binary/image notice review remain
 separate from remediation of these npm package findings.

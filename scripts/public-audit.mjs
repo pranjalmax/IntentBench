@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { stat } from "node:fs/promises";
 import process from "node:process";
-import path from "node:path";
 import { readVerifiedFile } from "../dist/packages/product-service/src/read-only-files.js";
 import { frozenA11Profile } from "../dist/packages/product-core/src/verifier-adapter.js";
 import {
@@ -80,10 +79,14 @@ const license = await json("third-party/licenses.json");
 assert.deepEqual(license.unknown, []);
 assert.equal(
   (await json("package.json")).license,
-  "UNLICENSED",
-  "Owner license approval has not been applied to this candidate",
+  "MIT",
+  "Project metadata must retain the owner-approved MIT license",
 );
-await assert.rejects(stat(path.join(root, "LICENSE")), { code: "ENOENT" });
+assert.equal((await json("package.json")).private, true);
+assert.equal((await json("package-lock.json")).packages[""].license, "MIT");
+assert.equal(manifest.projectLicense, "MIT");
+assert.equal(license.projectLicense, "MIT");
+await bytes("LICENSE", "2b51bd91af843169fbef4e3e9d0d9d2cd50b2f1f085f77875b575b3ff3885a33", true);
 process.stdout.write(
-  `${JSON.stringify({ status: "PASS_WITH_PUBLICATION_BLOCKERS", allowlistedFiles: expected.length, checkedLocalLinks: links, researchPins: research.files.length, reviewedTraces: evidence.traces.length, evidenceArtifacts: evidence.assets.length, privacyFindings: findings, lockedDependencies: license.packages.length, frozenA11BytesMatch: true, finalAccuracy: { V0: "8/12", A11: "8/12" }, projectLicense: "PENDING_APPROVAL", publicationApproved: false, scope: "Git-visible source and reviewed evidence; no Docker/model calls or ignored credential inspection" }, null, 2)}\n`,
+  `${JSON.stringify({ status: "PASS_WITH_PUBLICATION_BLOCKERS", allowlistedFiles: expected.length, checkedLocalLinks: links, researchPins: research.files.length, reviewedTraces: evidence.traces.length, evidenceArtifacts: evidence.assets.length, privacyFindings: findings, lockedDependencies: license.packages.length, frozenA11BytesMatch: true, finalAccuracy: { V0: "8/12", A11: "8/12" }, projectLicense: "MIT", publicationApproved: false, scope: "Git-visible source and reviewed evidence; no Docker/model calls or ignored credential inspection" }, null, 2)}\n`,
 );

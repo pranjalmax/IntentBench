@@ -1,22 +1,17 @@
-# Project license: approval required
+# Project license: approved MIT
 
-No project LICENSE has been applied. `private: true` and `license: UNLICENSED` prevent
-accidental package publication and make the pending status explicit; they do not
-select an open-source license. Do not publish until the owner approves a license
-and confirms authority over code, documentation, screenshots and selected outputs.
+The owner approved the standard [MIT License](LICENSE) for IntentBench with:
 
-## Proposed choices (not applied)
+Copyright (c) 2026 Pranjal Srivastava
 
-| Choice     | Decision to approve                                                                                                                                        |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| MIT        | Concise permissive licensing, preserving its copyright/permission notice. Proposed default if straightforward reuse is the goal.                           |
-| Apache-2.0 | Permissive licensing with an explicit contributor patent grant/termination and more redistribution/notice provisions. Choose if those terms are preferred. |
-| Defer      | Keep the candidate private/unpublished until rights and terms are settled.                                                                                 |
+The root LICENSE contains the complete grant, notice condition and warranty
+disclaimer. Package metadata uses the SPDX identifier `MIT`. `private: true`
+remains enabled to prevent accidental npm publication; it does not change the
+license grant. The neutral local Git export identity is not the copyright owner.
 
-Primary texts: [MIT at OSI](https://opensource.org/license/mit) and
-[Apache 2.0 at ASF](https://www.apache.org/licenses/LICENSE-2.0).
-This comparison is not legal advice. Approval must name the copyright owner/entity;
-do not assume the neutral local Git export identity is the copyright holder.
+This records the owner's licensing instruction, not authorization to push, create
+a public GitHub repository or deploy. Publication still requires separate approval.
+Reference: [MIT at OSI](https://opensource.org/license/mit).
 
 ## Third-party boundaries
 

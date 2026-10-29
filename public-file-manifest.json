@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "scope": "Complete public Git-visible source allowlist; manifest itself is listed but has no recursive digest",
-  "projectLicense": "PENDING_APPROVAL",
+  "projectLicense": "MIT",
   "excludedCategories": [
     "Sealed benchmark tasks/oracles/truth/variants",
     "Original Git history and internal plans/logs",
@@ -36,18 +36,23 @@
       "canonicalText": true
     },
     {
+      "path": "LICENSE",
+      "sha256": "2b51bd91af843169fbef4e3e9d0d9d2cd50b2f1f085f77875b575b3ff3885a33",
+      "canonicalText": true
+    },
+    {
       "path": "LICENSE-DECISION.md",
-      "sha256": "e076ae0ffd0b72b471f3dc5628f116f524ab4604e7c4e6536e35a56255fd1675",
+      "sha256": "1f16ebb8b5c1565deda8e6c91e90553245061cb0f6b257b4912d5b76ff7b8d4e",
       "canonicalText": true
     },
     {
       "path": "README.md",
-      "sha256": "7651daac9846b7f00fa0aa52dda1be239267d092201b49f940aa400f881fd908",
+      "sha256": "d218861dff489fc9bc2b631d7c622af894a9f52f35bd50bc5953082307396cc0",
       "canonicalText": true
     },
     {
       "path": "RELEASE-NOTES.md",
-      "sha256": "b1852763f4e52363d791a927fd6d35fe82a24964eb9c36460ad7e27adc71afee",
+      "sha256": "084f2dc4618cc86aea1cddd000059dce738dd98c0118dbcc1e121ae64778c513",
       "canonicalText": true
     },
     {
@@ -62,7 +67,7 @@
     },
     {
       "path": "docs/release/AUDIT.md",
-      "sha256": "4fac916911bf7e2c5d23b26bccb9f356972a5e4fcf167ea20e3b2b312b1ac799",
+      "sha256": "193e53fb5f3d087f589e3c7496ad7f4d1b0c835a5975e259172c286f602a80e8",
       "canonicalText": true
     },
     {
@@ -72,7 +77,7 @@
     },
     {
       "path": "docs/release/DEPENDENCIES.md",
-      "sha256": "30497c3b5118b4bee644fc3c63dd91d15125f1f12b2dcd4848232fb04d5b942b",
+      "sha256": "dba5d08931260fe98838ca747bded0d608743d5ec49c61627272a656ef123605",
       "canonicalText": true
     },
     {
@@ -102,7 +107,7 @@
     },
     {
       "path": "docs/release/VALIDATION.md",
-      "sha256": "b660a08ed4613c47a4cee134acadb0d4fd4555dcb14f163ca7b5ff073a5ad205",
+      "sha256": "250b85596ebb4ee1269f42604d40cd912c7b7ce477f6757b2a8485cc94454711",
       "canonicalText": true
     },
     {
@@ -152,12 +157,12 @@
     },
     {
       "path": "package-lock.json",
-      "sha256": "98ae084e920abea5a25e43d48ecaf773ce2248a4b00d0be94c73267a5b1339b0",
+      "sha256": "08dde171eea4652cc9cb6e702a23ad2b69cf7c51dc4bc6ce14d35242e879cd75",
       "canonicalText": true
     },
     {
       "path": "package.json",
-      "sha256": "72ab88420887bdde9244053bb5b5d9e280d3ed99179056c5b8cca0c7f301b77c",
+      "sha256": "50346a7d21722a2096d96ef936336194a834274e230edce2dd1851fa924321e3",
       "canonicalText": true
     },
     {
@@ -652,7 +657,7 @@
     },
     {
       "path": "scripts/public-audit.mjs",
-      "sha256": "8549052529137da25d3b4ed6aa97ea2eebc8d8f7ff9a040d75769130744faff8",
+      "sha256": "3435a0c0c1878f6884b571204771233821a1a8ae48400f3d9b933317845e367c",
       "canonicalText": true
     },
     {
@@ -667,12 +672,12 @@
     },
     {
       "path": "third-party/NOTICES.md",
-      "sha256": "5cee02c4820db30a9ab4c987f7ddfae5e40a91d1bb0ddf8a2d351f27e116bffb",
+      "sha256": "40a495c3c38e8a9662a71f937062d5f83e39665d604589d0c961d82b20f0bd33",
       "canonicalText": true
     },
     {
       "path": "third-party/licenses.json",
-      "sha256": "d59b3546599a56b37cc7d954dbd54faa01b1eb998067f0f4ff1cbadae97429c0",
+      "sha256": "b99a4c54f5dee793ee478552085b2fb5691674f66f2e090d48323837dde78739",
       "canonicalText": true
     },
     {
