@@ -15,6 +15,11 @@ A local verification workbench · public-source candidate · license pending app
 _Recorded genuine acceptance evidence—not a live session or a database preloaded
 into this export. COMPLETE is a verifier judgment, not guaranteed correctness._
 
+**Release status:** unpublished; license/rights approval and remediation of the
+October 29 development-dependency audit findings are pending. See the
+[release audit](docs/release/AUDIT.md). The recorded-only source build is validated;
+this is not publication clearance.
+
 ## Inspect the claim behind the conclusion
 
 Specification + candidate ZIP → atomic requirements → proof obligations → evidence

@@ -33,6 +33,13 @@ The frozen verifier gate/profile and all published scores/trajectories are uncha
 
 ## Measured result / limits
 
+The October 29 registry refresh reports three affected development-package entries
+(one high, two moderate). Patch resolution hit an npm peer-graph error; no unsafe
+bypass or lockfile fabrication was applied. Dependency remediation and renewed
+clean-install validation remain publication blockers. The October 21 zero-findings
+audit was a historical snapshot, not the current security status. See the
+[audit](docs/release/AUDIT.md).
+
 Final accuracy remains **V0 8/12, A1.1 8/12**. A1.1 accepted one extra golden but had
 one UNKNOWN and 5.175× review runtime; no accuracy improvement is claimed. COMPLETE
 is a verifier judgment, not guaranteed correctness.

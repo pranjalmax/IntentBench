@@ -29,6 +29,12 @@ semantic oracle execution or model request was used for these checks.
 
 ## Unverified / approval limits
 
+- The October 29 registry refresh supersedes the October 21 dependency-audit row:
+  three development-package entries are currently affected (one high, two moderate).
+  Supported patch resolution was blocked by an npm peer-graph error. The validated
+  dependency tree is unchanged; see the [current audit](AUDIT.md). Publication is
+  blocked pending remediation and a fresh install/test/build check.
+
 - GitHub-hosted CI and non-Windows local execution have not been run. The minimal
   CI workflow is prepared, not claimed green on GitHub.
 - Live mode was not rerun. Fresh-machine provisioning of the exact pinned image,

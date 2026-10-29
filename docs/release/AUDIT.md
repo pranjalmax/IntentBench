@@ -26,8 +26,23 @@ requires explicit opt-in and retains existing isolation checks.
 
 The registry audit initially reported two high-severity development-only transitive
 packages: brace-expansion and fast-uri. Compatible patches 5.0.12 and 3.1.9 were
-applied only to this export. The subsequent registry audit reported zero known
-vulnerabilities. This is a dated registry check, not a permanent security guarantee.
+applied only to this export. The subsequent October 21 registry audit reported zero
+known vulnerabilities. That result is historical, not the current release-security status.
+
+**October 29 refresh: publication remains blocked.** The registry now reports three
+affected development-package entries: `undici` (high), `@vitest/mocker` (moderate),
+and its parent `vitest` (moderate). Upstream patches include
+[Vitest/mocker 4.1.12](https://github.com/vitest-dev/vitest/security/advisories/GHSA-xp26-3454-mjgp)
+and [Undici 7.30.1](https://github.com/nodejs/undici/security/advisories/GHSA-2m5v-pch6-74hx).
+These are upstream reports, not a claim that this recorded-only application has
+been exploited. The pinned source dependency tree has not been silently changed.
+
+A narrow patch-resolution attempt failed with npm's peer-graph `edgesOut` error
+using both npm 10.9.3 and an isolated npm 10.9.9 invocation. No global npm upgrade,
+peer-check bypass, forced major update or manual lockfile rewrite was applied.
+The previously validated dependency tree is retained. Supported remediation,
+updated dependency notices and a new clean-install validation are required before
+publication. CI's high-severity audit gate is expected to block this candidate.
 
 [License inventory](../../third-party/licenses.json) records all 266 locked package
 locations with no missing license declarations. There are 216 installed locations
@@ -55,6 +70,7 @@ is separately approved; local fresh-clone checks are distinct evidence.
 
 - Owner approval of project license, copyright identity and publication rights for
   source, documentation, screenshots and sanitized model output.
+- Remediation and revalidation of the October 29 dependency audit findings above.
 - Separate approval before any public repository or deployment action.
 - Exact pinned live-image distribution, SBOM/CVE/notice review and fresh isolated
   live execution were not performed. A rebuilt image may not match and is refused.
