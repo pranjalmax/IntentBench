@@ -1,4 +1,4 @@
-import { chmod, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { chmod, lstat, mkdtemp, readFile, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 
@@ -7,6 +7,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { hashInventory, walkRegularFiles } from "../../benchmark/src/inventory.js";
 import { intakeRepositoryArchive, verifyCandidateSnapshot } from "../src/archive.js";
 import { fixtureEntries, writeZip } from "./zip-test-helper.js";
+import { removeTestDirectory } from "./temp-cleanup.js";
 
 const temporaryRoots: string[] = [];
 
@@ -17,9 +18,7 @@ async function tempRoot(): Promise<string> {
 }
 
 afterEach(async () => {
-  await Promise.all(
-    temporaryRoots.splice(0).map((root) => rm(root, { recursive: true, force: true })),
-  );
+  await Promise.all(temporaryRoots.splice(0).map((root) => removeTestDirectory(root)));
 });
 
 describe("repository archive intake", () => {
@@ -66,6 +65,40 @@ describe("repository archive intake", () => {
       intakeRepositoryArchive({ archivePath, snapshotsRoot: path.join(root, "snapshots") }),
     ).rejects.toMatchObject({ code: "ARCHIVE_PATH_UNSAFE" });
   });
+
+  it.skipIf(process.platform === "win32")(
+    "keeps published snapshots read-only on POSIX",
+    async () => {
+      const root = await tempRoot();
+      const archivePath = path.join(root, "candidate.zip");
+      await writeZip(archivePath, [
+        { path: "SPEC.md", bytes: "# Spec" },
+        { path: "src/value.ts", bytes: "export const value = 1;" },
+      ]);
+      const snapshot = await intakeRepositoryArchive({
+        archivePath,
+        snapshotsRoot: path.join(root, "snapshots"),
+      });
+      for (const directory of [
+        path.dirname(snapshot.manifestPath),
+        snapshot.candidatePath,
+        path.join(snapshot.candidatePath, "src"),
+      ]) {
+        expect((await lstat(directory)).mode & 0o777).toBe(0o555);
+      }
+      for (const file of [
+        snapshot.manifestPath,
+        path.join(snapshot.candidatePath, "SPEC.md"),
+        path.join(snapshot.candidatePath, "src/value.ts"),
+      ]) {
+        expect((await lstat(file)).mode & 0o777).toBe(0o444);
+        await expect(writeFile(file, "changed")).rejects.toMatchObject({ code: "EACCES" });
+      }
+      await expect(
+        writeFile(path.join(snapshot.candidatePath, "new.txt"), "changed"),
+      ).rejects.toMatchObject({ code: "EACCES" });
+    },
+  );
 
   it("rejects links and unsupported archive entry types", async () => {
     const root = await tempRoot();

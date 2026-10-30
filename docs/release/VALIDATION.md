@@ -38,10 +38,27 @@ screenshots and exports are authentic recorded evidence, not a freshly executed
 verification or populated run history. No Docker startup, credential access,
 semantic oracle execution or model request was used for these checks.
 
+## Cross-platform test teardown
+
+The first GitHub Actions Linux run exposed 15 teardown failures: immutable snapshot
+directories use `0555`, so POSIX `unlink`/`rmdir` cannot delete their children.
+Node's recursive `rm` with `force: true` does not override directory permissions.
+The correction is confined to test teardown: restore owner permissions inside a
+direct `intentbench-*` temporary test root, then remove it. Directory links are
+not followed, hard-link targets are not chmodded, and linked cleanup roots are
+rejected. Production snapshot publication, permissions and integrity checks are
+unchanged. The helper is excluded from the production build.
+
+Regression coverage exercises nested read-only cleanup, repeated cleanup,
+out-of-scope path rejection and link safety. An additional POSIX-only archive
+test checks actual published file/directory modes and denied writes. Windows
+skips that POSIX permission assertion; the Ubuntu workflow executes it. Consult
+the repository's Actions run for the hosted result of each commit.
+
 ## Unverified / approval limits
 
-- GitHub-hosted CI and non-Windows local execution have not been run. The minimal
-  CI workflow is prepared, not claimed green on GitHub.
+- Non-Windows execution is checked by the GitHub-hosted Ubuntu workflow rather
+  than a local Linux environment.
 - Live mode was not rerun. Fresh-machine provisioning of the exact pinned image,
   container SBOM/CVE/notice review and isolated live validation remain outstanding.
   There is no host-execution or arbitrary-image fallback.

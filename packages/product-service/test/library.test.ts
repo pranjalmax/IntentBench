@@ -5,10 +5,11 @@ import { afterEach, expect, it } from "vitest";
 import { VerificationService } from "../src/service.js";
 import { ProductLibrary } from "../src/product-library.js";
 import { FakeModelRunner, supportingReview, writeFixtureZip } from "./test-support.js";
+import { removeTestDirectory } from "../../product-core/test/temp-cleanup.js";
 
 const roots: string[] = [];
 afterEach(async () => {
-  for (const root of roots.splice(0)) await rm(root, { recursive: true, force: true });
+  for (const root of roots.splice(0)) await removeTestDirectory(root);
 });
 
 async function fixture() {

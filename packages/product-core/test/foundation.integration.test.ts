@@ -1,4 +1,4 @@
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdtemp } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 
@@ -12,13 +12,12 @@ import {
   transitionVerificationRun,
 } from "../src/index.js";
 import { fixtureEntries, writeZip } from "./zip-test-helper.js";
+import { removeTestDirectory } from "./temp-cleanup.js";
 
 const temporaryRoots: string[] = [];
 
 afterEach(async () => {
-  await Promise.all(
-    temporaryRoots.splice(0).map((root) => rm(root, { recursive: true, force: true })),
-  );
+  await Promise.all(temporaryRoots.splice(0).map((root) => removeTestDirectory(root)));
 });
 
 describe("product foundation", () => {

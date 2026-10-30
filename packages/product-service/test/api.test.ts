@@ -1,4 +1,4 @@
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdtemp, readFile } from "node:fs/promises";
 import { request } from "node:http";
 import type { AddressInfo } from "node:net";
 import os from "node:os";
@@ -8,11 +8,12 @@ import { afterEach, describe, expect, it } from "vitest";
 
 import { VerificationService, createIntentBenchServer } from "../src/index.js";
 import { FakeModelRunner, supportingReview, writeFixtureZip } from "./test-support.js";
+import { removeTestDirectory } from "../../product-core/test/temp-cleanup.js";
 
 const roots: string[] = [];
 
 afterEach(async () => {
-  await Promise.all(roots.splice(0).map((root) => rm(root, { recursive: true, force: true })));
+  await Promise.all(roots.splice(0).map((root) => removeTestDirectory(root)));
 });
 
 describe("IntentBench HTTP API", () => {

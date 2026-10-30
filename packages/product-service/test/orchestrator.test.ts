@@ -1,8 +1,9 @@
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdtemp } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 
 import { afterEach, describe, expect, it } from "vitest";
+import { removeTestDirectory } from "../../product-core/test/temp-cleanup.js";
 
 import {
   FileRunStore,
@@ -29,7 +30,7 @@ async function setupArchive(root: string): Promise<string> {
 }
 
 afterEach(async () => {
-  await Promise.all(roots.splice(0).map((root) => rm(root, { recursive: true, force: true })));
+  await Promise.all(roots.splice(0).map((root) => removeTestDirectory(root)));
 });
 
 describe("verification orchestration", () => {

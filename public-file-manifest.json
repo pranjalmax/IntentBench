@@ -107,7 +107,7 @@
     },
     {
       "path": "docs/release/VALIDATION.md",
-      "sha256": "250b85596ebb4ee1269f42604d40cd912c7b7ce477f6757b2a8485cc94454711",
+      "sha256": "e921fc9eec2f09fc4069a94293fe6f9881634b3279b6bf197c367db76243b9b4",
       "canonicalText": true
     },
     {
@@ -257,7 +257,7 @@
     },
     {
       "path": "packages/product-core/test/archive.test.ts",
-      "sha256": "d8c3add3387d8c98b06fb0c9ef416ad4abd3b8f3563c719265f7fc34811b34c9",
+      "sha256": "37981fa618ef270eec1f98aa4626f9ff9f24919413a47749403128e5912d9416",
       "canonicalText": true
     },
     {
@@ -282,7 +282,7 @@
     },
     {
       "path": "packages/product-core/test/foundation.integration.test.ts",
-      "sha256": "f9d36df0640f04259032536e088ae10381d5029f6322748dc02daf978947d521",
+      "sha256": "0ff832e88cbc563316670f7c8be2edbf90f2bbcd91bc40bbf43268e5d743a6d0",
       "canonicalText": true
     },
     {
@@ -294,6 +294,16 @@
       "path": "packages/product-core/test/run-store.test.ts",
       "sha256": "61b23f7a28437b3d552e5bbaab23f5de48c36e55b7c0362187b6095e6cbe5712",
       "canonicalText": true
+    },
+    {
+      "path": "packages/product-core/test/temp-cleanup.test.ts",
+      "canonicalText": true,
+      "sha256": "2fdf9b75aa5030bff3c3c04f0bc2f8f448a3a17cd9b493143e3c4f1756b12f77"
+    },
+    {
+      "path": "packages/product-core/test/temp-cleanup.ts",
+      "canonicalText": true,
+      "sha256": "f2ce5ad95f06ddb50ca0b7bb21defa993596d07cb44081bdee6ffa11ea52d909"
     },
     {
       "path": "packages/product-core/test/verifier-adapter.test.ts",
@@ -407,7 +417,7 @@
     },
     {
       "path": "packages/product-service/test/api.test.ts",
-      "sha256": "4e595f0cc0d5b2bc7e984584c234a0905a66c4829d3e6f2c0f231656babd8bcc",
+      "sha256": "9c468946fcc238536c6c8da3a471ec7f6f6d8191498038eb0a2eec1eccb0506f",
       "canonicalText": true
     },
     {
@@ -462,12 +472,12 @@
     },
     {
       "path": "packages/product-service/test/library.test.ts",
-      "sha256": "175a91338e55e4642217bc9200f67d67b1e33c1f0304e8a137934d21d2649f6c",
+      "sha256": "a4dc75d345adda9cad7141841c7d67d6de739128fc132a62364f7e593eef21f4",
       "canonicalText": true
     },
     {
       "path": "packages/product-service/test/orchestrator.test.ts",
-      "sha256": "de3c77884494fbba72c935f4b4447a9e110e5c93e245bcace12d76005187730a",
+      "sha256": "b03fc2f419d56d94c38bd6e89f82679884aed8cbd14b2f709e931784c26fb659",
       "canonicalText": true
     },
     {
