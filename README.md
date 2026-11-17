@@ -4,7 +4,7 @@
 
 ### Trace the verdict. Inspect the evidence.
 
-A local verification workbench · public-source candidate · MIT licensed
+A local verification workbench · public source · MIT licensed
 
 [Setup](docs/release/SETUP.md) · [Demo](docs/release/DEMO.md) · [Research](docs/release/RESEARCH.md) · [Security](docs/release/SECURITY.md)
 
@@ -15,13 +15,34 @@ A local verification workbench · public-source candidate · MIT licensed
 _Recorded genuine acceptance evidence—not a live session or a database preloaded
 into this export. COMPLETE is a verifier judgment, not guaranteed correctness._
 
-**Release status:** private GitHub source candidate; the [MIT License](LICENSE) is
+**Release status:** public GitHub source; the [MIT License](LICENSE) is
 approved and applied. The November 17 dependency refresh remediates minimatch's
 glob-pattern denial of service through compatible ESLint and typescript-eslint
 upgrades. Full and production-only npm audits report zero findings at that check.
 See the dated [dependency report](docs/release/DEPENDENCIES.md),
 [release audit](docs/release/AUDIT.md) and [CI runs](https://github.com/pranjalmax/IntentBench/actions).
-Public release and deployment remain separate decisions.
+The source repository is public. Website deployment is a separate approval.
+
+## Static portfolio demo — REPLAY
+
+The static edition preserves the workbench UI, six authentic published studies,
+six selected sanitized trajectories and one genuine saved acceptance report.
+Explore comparisons, navigate requirements → proof → evidence, and download the
+original JSON/Markdown report. Every screen is labeled REPLAY; browsing never
+performs a new verification. Both final systems scored **8/12**.
+
+```sh
+npm run replay:build
+npm run replay:preview
+```
+
+Open <http://127.0.0.1:4336/IntentBench/>. The proposed Pages address is
+`https://pranjalmax.github.io/IntentBench/`; this change does **not** deploy it.
+Only `dist/replay/` is deployable. It contains no API server, credentials,
+Docker/model connection or upload receiver. The original source snapshot and
+local run database are unavailable and explicitly labeled. Original evidence
+hashes are checked at build time; static data hashes are checked before display.
+[Static edition architecture and validation](docs/release/STATIC-REPLAY.md).
 
 ## Inspect the claim behind the conclusion
 
@@ -97,4 +118,4 @@ the advanced system's failure. The original saved database is intentionally abse
 This independently initialized export contains no original Git objects, sealed
 oracles/truth/variants, authentication or private local database. Retrospective
 classifications in reviewed published results are historical evidence, not sealed
-truth source files. The GitHub repository remains private; no deployment is included.
+truth source files. The GitHub repository is public; no deployment is included.

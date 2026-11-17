@@ -13,6 +13,8 @@ import { useRun } from "./use-run.js";
 import { requirementEvidence, summarizeReview, verdictExplanation } from "./report-view.js";
 import { History, SourceInspector, Settings } from "./library.js";
 import { Research } from "./research.js";
+import { staticReplay, applicationBase } from "./edition.js";
+import { ReplayAcceptance, ReplayDetails, ReplayUnavailable } from "./replay-view.js";
 
 type IconName =
   | "plus"
@@ -428,10 +430,14 @@ export function EvidenceReport({
   report,
   initialRequirement,
   onInspect,
+  exports: reportExports,
+  onRequirementChange,
 }: {
   report: VerificationReport;
   initialRequirement?: string | undefined;
   onInspect?: ((requirementId: string) => void) | undefined;
+  exports?: { json: string; md: string } | undefined;
+  onRequirementChange?: ((id: string) => void) | undefined;
 }) {
   const [selectedId, setSelectedId] = useState(
     initialRequirement ?? report.review.requirements[0]?.id ?? "",
@@ -461,6 +467,7 @@ export function EvidenceReport({
   );
   const select = (item: Requirement, keyboard = false): void => {
     setSelectedId(item.id);
+    onRequirementChange?.(item.id);
     setIndexOpen(false);
     if (window.matchMedia("(max-width: 760px)").matches)
       requestAnimationFrame(() => {
@@ -569,6 +576,7 @@ export function EvidenceReport({
               const item = report.review.requirements[next];
               if (item) {
                 setSelectedId(item.id);
+                onRequirementChange?.(item.id);
                 buttons[next]?.focus();
               }
             }}
@@ -835,13 +843,23 @@ export function EvidenceReport({
         </div>
       )}
       <footer className="dossier-footer">
-        <span>Persisted report · A1.1</span>
+        <span>
+          {reportExports ? "REPLAY · saved acceptance report" : "Persisted report · A1.1"}
+        </span>
         <div>
-          <a className="button paper-button" href={api.exportUrl(report.runId, "json")} download>
+          <a
+            className="button paper-button"
+            href={reportExports?.json ?? api.exportUrl(report.runId, "json")}
+            download
+          >
             <Icon name="download" size={15} />
             JSON
           </a>
-          <a className="button paper-button" href={api.exportUrl(report.runId, "md")} download>
+          <a
+            className="button paper-button"
+            href={reportExports?.md ?? api.exportUrl(report.runId, "md")}
+            download
+          >
             <Icon name="download" size={15} />
             Markdown
           </a>
@@ -1045,13 +1063,15 @@ export function RunView({
 }
 
 function readRunId(): string | null {
+  if (staticReplay) return null;
   const value = new URLSearchParams(window.location.search).get("run");
   return value && /^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$/u.test(value) ? value : null;
 }
 
-type Page = "verification" | "history" | "source" | "settings" | "research";
+type Page = "verification" | "history" | "source" | "settings" | "research" | "report";
 function readPage(): Page {
   const value = new URLSearchParams(window.location.search).get("view");
+  if (staticReplay && value === "report") return "report";
   return value === "history" || value === "source" || value === "settings" || value === "research"
     ? value
     : value === "verification" || readRunId()
@@ -1062,6 +1082,11 @@ const pageTitles: Record<
   Exclude<Page, "verification">,
   { title: string; description: string; label: string }
 > = {
+  report: {
+    title: "The verdict. The evidence.",
+    description: "A genuine saved acceptance report. Trace each requirement to its recorded proof.",
+    label: "Acceptance report",
+  },
   history: {
     title: "A record of the work.",
     description: "Reopen the evidence. Compare the record. Keep the provenance.",
@@ -1092,6 +1117,10 @@ export function App() {
   const [liveEnabled, setLiveEnabled] = useState<boolean | null>(null);
   const [modeUnavailable, setModeUnavailable] = useState(false);
   useEffect(() => {
+    if (staticReplay) {
+      setLiveEnabled(false);
+      return;
+    }
     const controller = new AbortController();
     void request<{ liveVerificationEnabled: unknown }>("/v1/settings", {
       signal: controller.signal,
@@ -1111,6 +1140,7 @@ export function App() {
     new URLSearchParams(window.location.search).get("requirement"),
   );
   const [lastRunId, setLastRunId] = useState<string | null>(() => {
+    if (staticReplay) return null;
     try {
       return localStorage.getItem("intentbench:last-run");
     } catch {
@@ -1183,7 +1213,7 @@ export function App() {
       </a>
       <aside className="sidebar">
         <a
-          href="/"
+          href={applicationBase}
           className="brand"
           onClick={(event) => {
             event.preventDefault();
@@ -1218,13 +1248,19 @@ export function App() {
               {page === "verification" && runId ? "Current verification" : "Last verification"}
             </button>
           )}
-          {(
-            [
-              ["history", "history"],
-              ["source", "code"],
-              ["research", "archive"],
-              ["settings", "settings"],
-            ] as const
+          {(staticReplay
+            ? ([
+                ["research", "archive"],
+                ["report", "file"],
+                ["source", "code"],
+                ["settings", "settings"],
+              ] as const)
+            : ([
+                ["history", "history"],
+                ["source", "code"],
+                ["research", "archive"],
+                ["settings", "settings"],
+              ] as const)
           ).map(([target, icon]) => (
             <button
               key={target}
@@ -1233,7 +1269,11 @@ export function App() {
               onClick={() => navigatePage(target)}
             >
               <Icon name={icon} size={18} />
-              {pageTitles[target].label}
+              {staticReplay && target === "settings"
+                ? "Demo details"
+                : staticReplay && target === "source"
+                  ? "Source availability"
+                  : pageTitles[target].label}
             </button>
           ))}
         </nav>
@@ -1244,13 +1284,15 @@ export function App() {
             <br />
             <span>Backed by evidence.</span>
           </p>
-          <span className="micro-label">Local edition / 0.3</span>
+          <span className="micro-label">
+            {staticReplay ? "Public replay / read-only" : "Local edition / 0.3"}
+          </span>
         </div>
       </aside>
       <div className="workspace">
         <header className="topbar">
           <div className="breadcrumb">
-            Local workspace <span>/</span>
+            {staticReplay ? "Recorded evidence" : "Local workspace"} <span>/</span>
             <strong>
               {page !== "verification"
                 ? pageTitles[page].label
@@ -1261,31 +1303,41 @@ export function App() {
           </div>
           <span className="local-indicator">
             <span />
-            Local service
+            {staticReplay ? "Static REPLAY" : "Local service"}
           </span>
         </header>
         <main id="main" className="main-content" tabIndex={-1}>
           <p className="muted small" role="status">
             {modeUnavailable
               ? "Execution mode unavailable; uploads remain disabled."
-              : liveEnabled === true
-                ? "Live mode enabled. New verification requires the pinned isolated runtime and dedicated authentication."
-                : liveEnabled === false
-                  ? "Recorded-only edition — research is REPLAY; no model execution is enabled."
-                  : "Checking execution mode; uploads remain disabled."}
+              : staticReplay
+                ? "PUBLIC REPLAY — authentic recorded evidence. No live verification or uploads."
+                : liveEnabled === true
+                  ? "Live mode enabled. New verification requires the pinned isolated runtime and dedicated authentication."
+                  : liveEnabled === false
+                    ? "Recorded-only edition — research is REPLAY; no model execution is enabled."
+                    : "Checking execution mode; uploads remain disabled."}
           </p>
           <header className="page-heading">
             <div>
               <h1>
                 {page !== "verification"
-                  ? pageTitles[page].title
+                  ? staticReplay && page === "settings"
+                    ? "Static by design."
+                    : staticReplay && page === "source"
+                      ? "Source availability."
+                      : pageTitles[page].title
                   : runId
                     ? "The verdict. The evidence."
                     : "A verdict you can inspect."}
               </h1>
               <p>
                 {page !== "verification"
-                  ? pageTitles[page].description
+                  ? staticReplay && page === "settings"
+                    ? "Public evidence. No execution backend. No credentials."
+                    : staticReplay && page === "source"
+                      ? "The report is public; its original candidate snapshot is not."
+                      : pageTitles[page].description
                   : runId
                     ? "Trace the conclusion back to the original requirement."
                     : "Examine the distance between what was asked and what was built."}
@@ -1313,7 +1365,27 @@ export function App() {
               </div>
             )}
           </header>
-          {page === "history" ? (
+          {staticReplay && page === "report" ? (
+            <ReplayAcceptance>
+              {({ report, downloads }) => (
+                <EvidenceReport
+                  key={requirement}
+                  report={report}
+                  initialRequirement={requirement ?? undefined}
+                  exports={downloads}
+                  onRequirementChange={(id) => {
+                    const url = new URL(window.location.href);
+                    url.searchParams.set("requirement", id);
+                    window.history.replaceState({}, "", url);
+                  }}
+                />
+              )}
+            </ReplayAcceptance>
+          ) : staticReplay && (page === "history" || page === "source") ? (
+            <ReplayUnavailable source={page === "source"} />
+          ) : staticReplay && page === "settings" ? (
+            <ReplayDetails />
+          ) : page === "history" ? (
             <History onOpen={navigate} />
           ) : page === "source" ? (
             <SourceInspector
@@ -1339,9 +1411,15 @@ export function App() {
             <section className="intake-card">
               <h2>Live verification is disabled.</h2>
               <p>
-                Browse authentic recorded research without Docker or authentication. Live execution
-                requires explicit service opt-in, a validated pinned Docker image and dedicated
-                credentials. No host execution fallback exists.
+                {staticReplay ? (
+                  "This static demo has no upload receiver or execution backend. Explore the saved acceptance report or research archive. To verify your own code, use the separate local application."
+                ) : (
+                  <>
+                    Browse authentic recorded research without Docker or authentication. Live
+                    execution requires explicit service opt-in, a validated pinned Docker image and
+                    dedicated credentials. No host execution fallback exists.
+                  </>
+                )}
               </p>
               <button className="button secondary" onClick={() => navigatePage("research")}>
                 Browse recorded research
@@ -1351,7 +1429,8 @@ export function App() {
           <footer className="workspace-footer">
             <span>IntentBench / evidence before assertion</span>
             <span>
-              Local API <span className="footer-rule">—</span> A1.1
+              {staticReplay ? "Recorded evidence" : "Local API"}{" "}
+              <span className="footer-rule">—</span> A1.1
             </span>
           </footer>
         </main>

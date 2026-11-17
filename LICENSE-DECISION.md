@@ -9,8 +9,8 @@ disclaimer. Package metadata uses the SPDX identifier `MIT`. `private: true`
 remains enabled to prevent accidental npm publication; it does not change the
 license grant. The neutral local Git export identity is not the copyright owner.
 
-This records the owner's licensing instruction, not authorization to push, create
-a public GitHub repository or deploy. Publication still requires separate approval.
+This records the owner's licensing instruction. The source repository was later
+published with separate owner approval; website deployment still requires approval.
 Reference: [MIT at OSI](https://opensource.org/license/mit).
 
 ## Third-party boundaries
@@ -34,5 +34,4 @@ upstream-notice/source-availability and image SBOM review.
 
 Also confirm the right to publish sanitized model outputs/screenshots under the
 chosen terms. Model-service account terms and entitlements are independent of the
-source license. Publication, GitHub repository creation and deployment are not
-authorized by preparing this candidate.
+source license. Public source availability does not authorize live-service deployment.

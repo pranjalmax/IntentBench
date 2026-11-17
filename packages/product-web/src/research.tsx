@@ -2,6 +2,14 @@ import { useState } from "react";
 import type { ResearchStudy } from "../../product-service/src/research-archive.js";
 import { request } from "./api.js";
 import { useResource, ResourceState, elapsed, date } from "./library.js";
+import { staticReplay } from "./edition.js";
+
+function updateResearchLink(key: string, value: string) {
+  const url = new URL(window.location.href);
+  url.searchParams.set(key, value);
+  if (key === "study") url.searchParams.delete("trace");
+  window.history.replaceState({}, "", url);
+}
 
 const metricLabels: Record<string, string> = {
   classificationAccuracy: "Classification accuracy",
@@ -19,7 +27,9 @@ export function Research() {
       signal,
     }),
   );
-  const [selected, setSelected] = useState("final-holdout-evaluation");
+  const [selected, setSelected] = useState(
+    () => new URLSearchParams(window.location.search).get("study") ?? "final-holdout-evaluation",
+  );
   return (
     <section className="library-page">
       <div className="replay-banner">
@@ -36,7 +46,14 @@ export function Research() {
           <div className="library-toolbar">
             <label className="search-field">
               Recorded study
-              <select value={selected} onChange={(event) => setSelected(event.target.value)}>
+              <select
+                aria-label="Recorded study"
+                value={selected}
+                onChange={(event) => {
+                  setSelected(event.target.value);
+                  updateResearchLink("study", event.target.value);
+                }}
+              >
                 {catalog.data.studies.map((study) => (
                   <option key={study.id} value={study.id}>
                     {study.title}
@@ -56,7 +73,11 @@ function Study({ id }: { id: string }) {
   const resource = useResource(`study:${id}`, (signal) =>
     request<ResearchStudy>(`/v1/research/${encodeURIComponent(id)}`, { signal }),
   );
-  const [trace, setTrace] = useState("");
+  const [trace, setTrace] = useState(() =>
+    id === "final-holdout-evaluation"
+      ? (new URLSearchParams(window.location.search).get("trace") ?? "")
+      : "",
+  );
   if (!resource.data) return <ResourceState error={resource.error} retry={resource.retry} />;
   const study = resource.data;
   return (
@@ -188,8 +209,10 @@ function Study({ id }: { id: string }) {
           <span>Completed {date(study.completedAt)}</span>
           <span className="hash-value">Published result SHA-256 (canonical LF) {study.sha256}</span>
           <span>
-            Integrity verified by the service before display. Published source evidence is never
-            rewritten.
+            {staticReplay
+              ? "Integrity checked during build and before display."
+              : "Integrity verified by the service before display."}{" "}
+            Published source evidence is never rewritten.
           </span>
         </footer>
       </article>
@@ -210,7 +233,10 @@ function Study({ id }: { id: string }) {
             <select
               aria-label="Recorded trajectory"
               value={trace}
-              onChange={(event) => setTrace(event.target.value)}
+              onChange={(event) => {
+                setTrace(event.target.value);
+                updateResearchLink("trace", event.target.value);
+              }}
             >
               <option value="">Select a frozen trajectory</option>
               {study.traces.map((item) => (
@@ -224,8 +250,8 @@ function Study({ id }: { id: string }) {
         </section>
       ) : (
         <p className="muted small">
-          The complete published result table is available above. Trajectory browsing in this
-          edition is enabled for the final evaluation's 24 sanitized traces.
+          The complete published result table is available above. Trajectory browsing in this public
+          edition includes six selected sanitized trajectories from the final evaluation.
         </p>
       )}
     </>

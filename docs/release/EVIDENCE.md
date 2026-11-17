@@ -24,9 +24,25 @@ non-benchmark notes repository, not part of research accuracy.
 
 Snapshot: `sha256:790be69176279cfe5859aa8bb7cd974bacbaec667a75a6b51e8ac52882dd31d9`.
 Report: `report_e4e4e77187a64c39a7ef3bb254e93fce`.
-No raw runtime log, authentication or saved database is copied into the package. The fresh public edition does not preload this run; the files below are recorded exports.
+No raw runtime log, authentication or saved database is copied into the package.
+The local edition does not preload this run into a database. The static edition
+renders its genuine copied report as explicitly labeled REPLAY.
 Exports retain meaningful workspace-local reproduction commands; do not execute
 those commands on the host merely because they appear in a report.
+
+## Static edition browser captures
+
+These are new screenshots of the actual static `/IntentBench/` build, rendering
+the original saved acceptance export. They are not new verifier executions and do
+not replace the historical acceptance screenshots above. The public-file manifest
+pins their bytes separately from the original evidence manifest.
+
+- [Static desktop, 1440 × 1000](assets/replay-desktop.png)
+- [Static mobile, 390 × 844](assets/replay-mobile.png)
+
+The browser gate verified requirement keyboard navigation, proof/evidence anchors,
+both original downloads and refreshed deep links. There were no live API/write
+requests, model calls, axe violations or console errors in the checked states.
 
 ## Selected complete sanitized research trajectories
 

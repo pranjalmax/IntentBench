@@ -17,6 +17,10 @@
     "format:check": "prettier --check .",
     "product:serve": "npm run product:build --silent && node dist/packages/product-service/src/cli.js",
     "product:build": "npm run build --silent && vite build --config packages/product-web/vite.config.ts",
+    "replay:build": "npm run build --silent && vite build --config packages/product-web/vite.config.ts --mode replay && node dist/scripts/build-replay.js",
+    "replay:preview": "vite preview --config packages/product-web/vite.config.ts --mode replay --host 127.0.0.1 --port 4336",
+    "test:replay-browser": "node scripts/replay-browser.mjs",
+    "audit:replay": "node scripts/replay-audit.mjs",
     "product:web:dev": "vite --config packages/product-web/vite.config.ts --host 127.0.0.1",
     "audit:public": "npm run build --silent && node scripts/public-audit.mjs",
     "test:browser": "node scripts/public-browser.mjs"

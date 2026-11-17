@@ -158,5 +158,5 @@ enable live mode without its exact validated isolation prerequisites.
 
 Hosted GitHub/Linux execution subsequently passed at the October 30 cleanup-fix
 commit ([run 41023529593](https://github.com/pranjalmax/IntentBench/actions/runs/41023529593)).
-The repository is private. Separate public-publication approval and documented
+The source repository is now public. Separate website-deployment approval and documented
 binary/image notice review remain distinct from remediation of npm findings.

@@ -63,7 +63,27 @@ passed every CI step. That historical result does not substitute for the new run
 
 No Docker startup, live verification, model call or new browser acceptance run
 is part of this tooling-only refresh. The recorded UI/browser evidence above
-remains dated historical evidence. The GitHub repository remains private.
+remains dated historical evidence. The GitHub source repository is now public.
+
+## Static REPLAY feature
+
+The [static edition](STATIC-REPLAY.md) adds a separate `/IntentBench/` build target
+without deploying a site or changing the local execution boundary. Its dedicated
+browser gate exercises the production static output at desktop/mobile sizes,
+authentic report downloads, requirement keyboard navigation, refreshed links,
+trace pagination and tamper rejection. It asserts no API, write or external
+requests. Existing browser evidence above remains historical; newly captured
+static screenshots are separately labeled. CI builds/tests both editions and
+has no deployment permissions or deploy action.
+
+Local validation of this feature passes the complete suite (12 Node audit tests,
+117 Vitest tests and the one POSIX-only Windows skip), both production builds,
+the static artifact audit and desktop/mobile browser gates for both the static
+edition and the original local recorded API. Static artifact inspection covers
+32 files, including 15 verified data files; no backend or private material is
+included. Both report downloads match the original exports. The static browser
+gate recorded zero forbidden requests, console errors and axe violations, and
+rejected deliberately changed evidence before rendering a report.
 
 ## Cross-platform test teardown
 

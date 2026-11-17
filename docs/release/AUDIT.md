@@ -1,7 +1,7 @@
 # Public export audit
 
-This source candidate is stored in the existing **private** GitHub repository and
-is **not cleared for public publication** by this audit. The owner-approved
+This source is stored in the existing **public** GitHub repository following the
+owner-approved source release. The owner-approved
 [MIT License](../../LICENSE) is applied. No visibility change or deployment is part
 of dependency remediation.
 
@@ -83,7 +83,8 @@ before being reported complete. Local installation checks are distinct evidence.
 
 - Third-party and model-output publication rights remain subject to applicable
   upstream/account terms; the project MIT grant does not replace those terms.
-- Separate approval before any public repository or deployment action.
+- Source publication is complete. Website deployment requires separate approval;
+  the static REPLAY feature does not deploy or enable Pages.
 - Exact pinned live-image distribution, SBOM/CVE/notice review and fresh isolated
   live execution were not performed. A rebuilt image may not match and is refused.
 - Optional-platform notice coverage and absent top-level dependency notices are
