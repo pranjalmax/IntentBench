@@ -67,8 +67,13 @@ separate reviewed Pages workflow. Do not publish the parent `dist/` directory:
 it also contains the compiled local service. Do not enable serverless functions,
 live uploads, proxy routes, environment credentials or model connections.
 
-The present CI only builds and tests. It has no Pages deployment action or
-`pages: write`/`id-token: write` permissions. A content security policy restricts
+The existing source CI only builds, tests and audits. The separate
+[manual release workflow](../../.github/workflows/pages-replay.yml) is guarded to
+this repository's `main` branch, validates the static artifact and uses a dedicated
+Pages deployment job. It has no automatic trigger or custom inputs. It is not
+dispatched by this change and does not enable Pages. Read the
+[scoped security policy and activation prerequisites](STATIC-RELEASE-POLICY.md)
+before any future deployment. A content security policy restricts
 scripts, styles, fonts and data connections to self and disallows form submission,
 objects and external base URLs. No arbitrary historical command is executed.
 
