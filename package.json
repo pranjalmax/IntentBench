@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "test": "node --test scripts/public-audit.test.mjs && vitest run",
+    "test": "node --test scripts/public-audit.test.mjs scripts/scoped-release-policy.test.mjs && vitest run",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
@@ -21,6 +21,7 @@
     "replay:preview": "vite preview --config packages/product-web/vite.config.ts --mode replay --host 127.0.0.1 --port 4336",
     "test:replay-browser": "node scripts/replay-browser.mjs",
     "audit:replay": "node scripts/replay-audit.mjs",
+    "audit:scoped-release": "node scripts/scoped-release-audit.mjs",
     "product:web:dev": "vite --config packages/product-web/vite.config.ts --host 127.0.0.1",
     "audit:public": "npm run build --silent && node scripts/public-audit.mjs",
     "test:browser": "node scripts/public-browser.mjs"

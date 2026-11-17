@@ -1,0 +1,90 @@
+name: Static REPLAY release (manual, reviewed dev risk)
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: pages-replay-release
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Validate static REPLAY release policy
+    if: github.repository == 'pranjalmax/IntentBench' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22.20.0
+      - run: npm ci --ignore-scripts --strict-peer-deps --no-audit --no-fund
+      - run: npm run format:check
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run product:build
+      - run: npm run replay:build
+      - run: npm run test:replay-browser
+      - run: npm run audit:public
+      - run: npm ls --all
+      - name: Production dependency audit (no exceptions)
+        run: npm audit --omit=dev
+      - name: Full findings and narrow reviewed development-risk policy
+        run: npm run audit:scoped-release
+      # Last command before upload: no unchecked artifact can reach deployment.
+      - name: Verify final static artifact integrity and privacy
+        run: npm run audit:replay
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
+        with:
+          name: replay-${{ github.run_id }}-${{ github.run_attempt }}
+          path: dist/replay
+          include-hidden-files: true # The audited .nojekyll file only.
+          retention-days: 1
+
+  full-audit:
+    name: Full npm audit (unresolved findings remain visible)
+    if: github.repository == 'pranjalmax/IntentBench' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22.20.0
+      - run: npm ci --ignore-scripts --strict-peer-deps --no-audit --no-fund
+      - run: npm audit
+
+  deploy:
+    name: Publish verified static REPLAY only
+    needs: validate
+    if: github.repository == 'pranjalmax/IntentBench' && github.ref == 'refs/heads/main' && needs.validate.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # No checkout, dependency installation, backend or candidate execution here.
+      - name: Deploy the artifact produced by this run and attempt
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
+        with:
+          artifact_name: replay-${{ github.run_id }}-${{ github.run_attempt }}

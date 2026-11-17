@@ -58,6 +58,17 @@ copyright notices are not private user paths and remain intact.
 
 ## Before any publication or live-image distribution
 
+### Static portfolio release exception
+
+The proposed manually triggered Pages workflow publishes only audited
+`dist/replay/` files, without a server, upload receiver, authentication or model
+calls. An explicit [scoped release policy](STATIC-RELEASE-POLICY.md) accepts the
+currently unpatched, development-only picomatch advisory for a trusted-main
+static build. This is not a resolved vulnerability. The full npm audit stays
+active and visibly failing. New advisories, production findings, audit errors,
+failed tests, browser checks, privacy or artifact verification block publication.
+It does not authorize deploying the local API or changing live isolation.
+
 Approve [project licensing](../../LICENSE-DECISION.md), rights to reviewed evidence,
 and final source/export policy. Resolve the [audit blockers](AUDIT.md). The reference
 image recipe alone does not establish the pinned image ID, a complete image SBOM,

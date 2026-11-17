@@ -3,7 +3,44 @@
 Scope: the public-source edition only. Frozen benchmarks, verifier profile/gate,
 experimental trajectories and measured results were not changed or rerun.
 
-## Current refresh: minimatch globparts amplification
+## Current unresolved finding: picomatch repeated extglobs
+
+**Reviewed November 17, 2026:** [GHSA-fc5q-39xc-vjpf / CVE-2026-112366](https://github.com/advisories/GHSA-fc5q-39xc-vjpf)
+affects picomatch `<=4.0.7`, including the installed deduplicated **4.0.7**.
+The advisory lists **no patched version**. Repeated single-branch extglob patterns
+can produce exponential regular-expression backtracking and event-loop denial of
+service. This is a real unresolved high-severity development-tool risk.
+
+The latest full registry report contains **13 high affected package entries for
+this one advisory**, including inherited peer exposure through jest-dom; earlier
+reports contained 12. These are not 13 independent CVEs. Every affected lockfile
+node is `dev: true`; `npm audit --omit=dev` reports zero vulnerabilities.
+
+| Installed development chain                               | Installed versions              |
+| --------------------------------------------------------- | ------------------------------- |
+| root → Vite → picomatch                                   | 8.3.4 → 4.0.7                   |
+| root → Vitest → picomatch / tinyglobby / Vite             | 4.1.12 → 4.0.7 / 0.2.17 / 8.3.4 |
+| root → @vitejs/plugin-react → Vite                        | 6.1.2 → 8.3.4                   |
+| root → typescript-eslint → typescript-estree → tinyglobby | 8.73.0 → 8.73.0 → 0.2.17        |
+| tinyglobby → fdir → picomatch; tinyglobby → picomatch     | 0.2.17 → 6.5.0 → 4.0.7          |
+| root → jest-dom → Vitest (peer exposure)                  | 7.0.1 → 4.1.12                  |
+
+The other inherited entries are the matching `@typescript-eslint/eslint-plugin`,
+`parser`, `type-utils` and `utils` packages. Checked newer Vite 8.3.8 and Vitest
+5.1.0 still request picomatch `^4.0.7`; an upgrade is not a verified fix. npm's
+suggested older toolchains are not adopted. The open
+[upstream PR #194](https://github.com/micromatch/picomatch/pull/194) explicitly does
+not address all repeated-extglob cases and is not used as an unofficial patch.
+
+No dependencies, overrides or production behavior are changed by the manual
+release workflow. The full `npm audit` remains active and fails with its real
+exit code. The [static-only release policy](STATIC-RELEASE-POLICY.md) records the
+trust boundary, automated fail-closed exception checks and residual risk. It
+does not apply to live verification, a public build service, unreviewed PR content
+or new advisories. Recheck upstream before each publication; remove the exception
+when a compatible verified patch can be adopted.
+
+## Historical minimatch globparts remediation
 
 The November 17 pre-release audit found **nine moderate package entries** tracing
 to one advisory: [GHSA-g3hv-75wg-m249 / CVE-2026-118764](https://github.com/advisories/GHSA-g3hv-75wg-m249).
@@ -37,7 +74,7 @@ dependency graph. All lockfile changes are development-only, with production
 dependency versions preserved.
 
 Clean installation uses `npm ci --ignore-scripts --strict-peer-deps --no-audit --no-fund`.
-Full and production-only registry audits now return zero findings. No force,
+At that remediation check, full and production-only registry audits returned zero findings. No force,
 legacy-peer mode, advisory suppression or manually forced major override is used.
 The tested public dependency gate rejects both the original 10.2.6 and a vulnerable
 nested 11.0.0 copy. Lint/typecheck, full tests and the production build exercise

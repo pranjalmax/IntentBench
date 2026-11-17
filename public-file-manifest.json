@@ -21,6 +21,11 @@
       "canonicalText": true
     },
     {
+      "path": ".github/workflows/pages-replay.yml",
+      "sha256": "e241d781ba25ebc33197c6497e39ff99387daac858243dd9ec2438a0af2d3b38",
+      "canonicalText": true
+    },
+    {
       "path": ".gitignore",
       "sha256": "1a8803d0f2507bf1c8c82e6ca283efa32ca79fd895b34d38aed3b03c525f0399",
       "canonicalText": true
@@ -47,7 +52,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "36eb3655e7b890421d7456d69fb01a531759550803c79b88353d6d49bf5139cb",
+      "sha256": "845268a1fb21b8a44f483c5a05e31d010b8973dbe8f5bbe1ca4362d9c5cf6783",
       "canonicalText": true
     },
     {
@@ -67,7 +72,7 @@
     },
     {
       "path": "docs/release/AUDIT.md",
-      "sha256": "a9ee69fed9ef1a6a1b505fa4c89f8a522355e691e1a12e96b715a9fe5bd7ef98",
+      "sha256": "9d04d98744eaa20eedda373b053bb37bb3bdb486ca22d0d3eeb7bc676960028d",
       "canonicalText": true
     },
     {
@@ -77,7 +82,7 @@
     },
     {
       "path": "docs/release/DEPENDENCIES.md",
-      "sha256": "09298d3c8e258c7c2b7694e122e1493634e2e07d5b9a721bf724b54371d42de2",
+      "sha256": "c30a8b2d8cb4b91f91d5410a62ac4537ac8239c78aebcaf073db34a1ff2e9f85",
       "canonicalText": true
     },
     {
@@ -97,7 +102,7 @@
     },
     {
       "path": "docs/release/SECURITY.md",
-      "sha256": "f46e0489b71dd9e0e2e11d4048e5008d6996fa8343f9ddceb83dd835b14aa48e",
+      "sha256": "50e95b58f3e64ab252dad566b039358b81e7e9b6e6b2c3ef08f0f2131685cc2d",
       "canonicalText": true
     },
     {
@@ -106,9 +111,14 @@
       "canonicalText": true
     },
     {
+      "path": "docs/release/STATIC-RELEASE-POLICY.md",
+      "sha256": "d2abf79c32bc517dbd1fa350e861e7097f0e265fa3bd84fdbcce9d8bfae42b66",
+      "canonicalText": true
+    },
+    {
       "path": "docs/release/STATIC-REPLAY.md",
       "canonicalText": true,
-      "sha256": "ab97727b84890097f9d64d0be377b8fa996bc1e35da913bfb73412a88d75235c"
+      "sha256": "081e010e48fe8d0041512d90efc95cc741d4bf05113292c988342a26acb5e322"
     },
     {
       "path": "docs/release/VALIDATION.md",
@@ -177,7 +187,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "b59f147ccaadec7812d48d3f0780c20955bc074d4e62113373ee19dbc59ef4bc",
+      "sha256": "18183402c97bbc535f71d047170ff65fc2da0238c29b2934107cfca67f939dad",
       "canonicalText": true
     },
     {
@@ -739,6 +749,21 @@
       "path": "scripts/replay-browser.mjs",
       "canonicalText": true,
       "sha256": "9f2dae9e373c913e04ad66ce69f55aa7e291df5a853945492ace92405c9f1f2f"
+    },
+    {
+      "path": "scripts/scoped-release-audit.mjs",
+      "sha256": "ea37060e0aff005535a1bedf34e8b6dbda5c568dee56b3ae6628e668800f47ee",
+      "canonicalText": true
+    },
+    {
+      "path": "scripts/scoped-release-policy.mjs",
+      "sha256": "7add805287b1a7e50036d597cb6802baf17551467198b6c4af10bd941bbd153a",
+      "canonicalText": true
+    },
+    {
+      "path": "scripts/scoped-release-policy.test.mjs",
+      "sha256": "a0360c8ff4a5ee5f1d3602daf5d41f4440b61ce174af074f2ddda304a494d5bb",
+      "canonicalText": true
     },
     {
       "path": "third-party/NOTICES.md",

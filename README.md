@@ -16,12 +16,16 @@ _Recorded genuine acceptance evidence—not a live session or a database preload
 into this export. COMPLETE is a verifier judgment, not guaranteed correctness._
 
 **Release status:** public GitHub source; the [MIT License](LICENSE) is
-approved and applied. The November 17 dependency refresh remediates minimatch's
-glob-pattern denial of service through compatible ESLint and typescript-eslint
-upgrades. Full and production-only npm audits report zero findings at that check.
+approved and applied. The minimatch remediation remains in place. A subsequent
+November 17 registry refresh reports unresolved development-only picomatch
+[GHSA-fc5q-39xc-vjpf](https://github.com/advisories/GHSA-fc5q-39xc-vjpf);
+the full audit fails, while the production-only audit is clean. No patched release
+is available at review time. The proposed manual static-only release uses an
+[explicit, narrow risk policy](docs/release/STATIC-RELEASE-POLICY.md), not an audit waiver
+for other findings. The full-audit CI failure stays visible.
 See the dated [dependency report](docs/release/DEPENDENCIES.md),
 [release audit](docs/release/AUDIT.md) and [CI runs](https://github.com/pranjalmax/IntentBench/actions).
-The source repository is public. Website deployment is a separate approval.
+The source repository is public. Enabling Pages and running deployment require separate approval.
 
 ## Static portfolio demo — REPLAY
 

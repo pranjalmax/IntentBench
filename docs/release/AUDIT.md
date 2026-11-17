@@ -48,10 +48,17 @@ was used. See the [exact advisories, dependency chains, root cause and limits](D
 entries tracing to one advisory, **GHSA-g3hv-75wg-m249**. Compatible upstream
 ESLint 10.15.0 and typescript-eslint 8.73.0 upgrades resolve minimatch 11.0.9 through
 their own supported dependency ranges, without a minimatch override. Clean strict
-installation and full/production-only audits pass with zero findings. All changed
+installation and full/production-only audits passed with zero findings at that check. All changed
 lockfile nodes are development-only; production versions and application source
 are unchanged. Earlier clean audits are historical snapshots, not promises about
 future advisories.
+
+**Subsequent November 17 refresh:** full audit now fails for unresolved high
+development-only **GHSA-fc5q-39xc-vjpf** in picomatch 4.0.7 (13 affected package
+entries through one advisory). The production-only audit remains clean. There
+is no published patched version at review time. This finding is not suppressed
+or marked fixed; see the [dependency investigation](DEPENDENCIES.md) and
+[explicit static-release risk policy](STATIC-RELEASE-POLICY.md).
 
 [License inventory](../../third-party/licenses.json) records all 275 locked package
 locations with no missing license declarations. There are 225 installed locations
@@ -72,12 +79,18 @@ actions, read-only permissions, no persisted checkout credentials, no secrets an
 no `pull_request_target`. It installs with lifecycle scripts disabled, then runs
 format/lint/typecheck/tests/build, public-file audit, strict peer-graph checks,
 and full plus production-only registry audits without a severity threshold.
-No model, Docker, deployment, package publishing or artifact upload job is configured.
+That source CI has no model, Docker, deployment, package publishing or artifact upload job.
+The new, separate [manual static release workflow](../../.github/workflows/pages-replay.yml)
+requires all functional/artifact/privacy gates, a clean production-only audit and
+the narrow reviewed development-risk policy. Its independent full-audit job also
+retains the raw failing audit; the overall run stays red while that job fails,
+even if a separately approved scoped deployment succeeds. It is not dispatched
+or enabled by this PR.
 The [GitHub secure-use reference](https://docs.github.com/en/actions/reference/security/secure-use)
 informs these controls. [Ubuntu run 41023529593](https://github.com/pranjalmax/IntentBench/actions/runs/41023529593)
 passed all source gates at the preceding cleanup-fix commit. Each dependency update
 must also pass its own complete [Actions run](https://github.com/pranjalmax/IntentBench/actions)
-before being reported complete. Local installation checks are distinct evidence.
+before being reported fully audit-clean. Local installation checks are distinct evidence.
 
 ## Remaining blockers / scope limits
 
