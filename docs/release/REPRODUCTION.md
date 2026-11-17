@@ -48,5 +48,8 @@ actions and persisted checkout credentials disabled. No secrets, model calls,
 Docker jobs, deployment, publication or artifact upload is configured. npm lifecycle
 scripts are disabled during dependency installation.
 
-It has not been executed on GitHub because publication is not authorized. Local
-fresh-clone results and remaining limits are recorded in the [audit](AUDIT.md).
+The workflow passed on GitHub's Ubuntu runner at the preceding cleanup-fix commit
+([run 41023529593](https://github.com/pranjalmax/IntentBench/actions/runs/41023529593)).
+Check the [Actions page](https://github.com/pranjalmax/IntentBench/actions) for the
+run corresponding to the current commit. The repository remains private; local
+installation results and remaining limits are recorded in the [audit](AUDIT.md).

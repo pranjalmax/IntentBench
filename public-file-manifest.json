@@ -42,17 +42,17 @@
     },
     {
       "path": "LICENSE-DECISION.md",
-      "sha256": "1f16ebb8b5c1565deda8e6c91e90553245061cb0f6b257b4912d5b76ff7b8d4e",
+      "sha256": "246d03b1a5821148f24c34720e8064fdb163937d2198bad9d28a52448a735c23",
       "canonicalText": true
     },
     {
       "path": "README.md",
-      "sha256": "d218861dff489fc9bc2b631d7c622af894a9f52f35bd50bc5953082307396cc0",
+      "sha256": "12b69ee51bfa46a2464fab12e8b9d8802676dd5ca73f7aa14f9b26f18ebb681b",
       "canonicalText": true
     },
     {
       "path": "RELEASE-NOTES.md",
-      "sha256": "084f2dc4618cc86aea1cddd000059dce738dd98c0118dbcc1e121ae64778c513",
+      "sha256": "8a1a57c84368570656bc1df613664f5d1984b99ce737b6edfd997d62e76d2ab1",
       "canonicalText": true
     },
     {
@@ -67,7 +67,7 @@
     },
     {
       "path": "docs/release/AUDIT.md",
-      "sha256": "193e53fb5f3d087f589e3c7496ad7f4d1b0c835a5975e259172c286f602a80e8",
+      "sha256": "9c3a45dfad806731ec8dc7080a273b65930b1763e29d1ce406162d8f5528c494",
       "canonicalText": true
     },
     {
@@ -77,7 +77,7 @@
     },
     {
       "path": "docs/release/DEPENDENCIES.md",
-      "sha256": "dba5d08931260fe98838ca747bded0d608743d5ec49c61627272a656ef123605",
+      "sha256": "064f2795c0079254cda226b1687dcc78f61cf56478761ccd3082d214349fde85",
       "canonicalText": true
     },
     {
@@ -87,7 +87,7 @@
     },
     {
       "path": "docs/release/REPRODUCTION.md",
-      "sha256": "25edecb220560759c65118ca05d3409587a5c28f33a58c55bab4b98e9d9bd578",
+      "sha256": "8d15a863354e44ef6e337e227e6e963d8c6cd58a802eece14f4539cb3ed62e69",
       "canonicalText": true
     },
     {
@@ -107,7 +107,7 @@
     },
     {
       "path": "docs/release/VALIDATION.md",
-      "sha256": "e921fc9eec2f09fc4069a94293fe6f9881634b3279b6bf197c367db76243b9b4",
+      "sha256": "36609b366d4af6e32d01e0552e0deab93b7cdf99a5e8fe0252251012bed7d93f",
       "canonicalText": true
     },
     {
@@ -157,12 +157,12 @@
     },
     {
       "path": "package-lock.json",
-      "sha256": "08dde171eea4652cc9cb6e702a23ad2b69cf7c51dc4bc6ce14d35242e879cd75",
+      "sha256": "96e02814c657ff58006acd812e6416c89a5e7dd4eb8461028a1446b4a8ed611f",
       "canonicalText": true
     },
     {
       "path": "package.json",
-      "sha256": "50346a7d21722a2096d96ef936336194a834274e230edce2dd1851fa924321e3",
+      "sha256": "85c2d50953cdc3e9d760aa0aff36b083048cfaf831a130262c45a7a01615c96e",
       "canonicalText": true
     },
     {
@@ -417,7 +417,7 @@
     },
     {
       "path": "packages/product-service/test/api.test.ts",
-      "sha256": "9c468946fcc238536c6c8da3a471ec7f6f6d8191498038eb0a2eec1eccb0506f",
+      "sha256": "08c8dc30aea6a717cd7e2e9d3b68e4e6161dace1a1a1eb359b41ef4f09905cec",
       "canonicalText": true
     },
     {
@@ -477,7 +477,7 @@
     },
     {
       "path": "packages/product-service/test/orchestrator.test.ts",
-      "sha256": "b03fc2f419d56d94c38bd6e89f82679884aed8cbd14b2f709e931784c26fb659",
+      "sha256": "7852186e5ce8860f14a9c792db7d73745ef5ba92950605df5496e252355f4fd9",
       "canonicalText": true
     },
     {
@@ -662,7 +662,7 @@
     },
     {
       "path": "scripts/public-audit-lib.mjs",
-      "sha256": "9c7a66c18b367eeda30536aa5ff0ad710b911f40e97136365563fdea6f065d44",
+      "sha256": "7f858c39cc60dfec290ea1b899f179e785e63656e36717f1b569b6bce324c259",
       "canonicalText": true
     },
     {
@@ -672,7 +672,7 @@
     },
     {
       "path": "scripts/public-audit.test.mjs",
-      "sha256": "dba5d2a68b0636cf7c60811e2cc8a66f3ad3a2d48fa310c2451b3954b0d39ffd",
+      "sha256": "39182ac7b766f575fde26dff7aa120f4d719406ea46db2c4396f7080e36db904",
       "canonicalText": true
     },
     {
@@ -682,12 +682,12 @@
     },
     {
       "path": "third-party/NOTICES.md",
-      "sha256": "40a495c3c38e8a9662a71f937062d5f83e39665d604589d0c961d82b20f0bd33",
+      "sha256": "f53563bda7177aa2edb42e1256c13d64ff54e0ea3c64cc9016e204fbfd3667e1",
       "canonicalText": true
     },
     {
       "path": "third-party/licenses.json",
-      "sha256": "b99a4c54f5dee793ee478552085b2fb5691674f66f2e090d48323837dde78739",
+      "sha256": "ac047eab28a3f4628c22ea67b2fa0c415bca1e57d54c9d50d39061f91593b8e5",
       "canonicalText": true
     },
     {

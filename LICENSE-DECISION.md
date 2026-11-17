@@ -15,7 +15,7 @@ Reference: [MIT at OSI](https://opensource.org/license/mit).
 
 ## Third-party boundaries
 
-[Dependency inventory](third-party/licenses.json) covers 266 locked package locations,
+[Dependency inventory](third-party/licenses.json) covers 275 locked package locations,
 including optional platforms. All have declared license metadata. [Upstream notices](third-party/NOTICES.md)
 are retained separately and do not license IntentBench itself.
 
@@ -25,9 +25,9 @@ remain separate from any project license; do not relabel dependencies or fonts.
 See [Mozilla's MPL FAQ](https://www.mozilla.org/en-US/MPL/2.0/FAQ/) and the
 [official OFL site](https://openfontlicense.org/).
 
-The inventory was collected on Windows: 216 installed package locations have
+The inventory was refreshed on Windows on November 17: 225 installed package locations have
 available files; 50 optional platform packages are represented by lockfile metadata.
-Nine installed packages lack top-level notice files, disclosed in the audit report.
+Eight installed packages lack top-level notice files, disclosed in the audit report.
 No node_modules, compiled dependency binaries or Docker image are distributed in
 this source export. Bundled binary/image distribution would require a separate
 upstream-notice/source-availability and image SBOM review.

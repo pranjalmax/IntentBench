@@ -38,6 +38,33 @@ screenshots and exports are authentic recorded evidence, not a freshly executed
 verification or populated run history. No Docker startup, credential access,
 semantic oracle execution or model request was used for these checks.
 
+## November 17 dependency refresh
+
+A clean `npm ci --ignore-scripts --strict-peer-deps --no-audit --no-fund` with Node
+22.20.0/npm 10.9.3 validates ESLint 10.15.0, typescript-eslint 8.73.0 and upstream-selected
+minimatch 11.0.9. No minimatch override or peer-validation bypass is used. Both full
+and production-only npm audits report zero findings at this refresh.
+
+The local complete suite passes 12 Node audit tests and 107 Vitest tests, with the
+one POSIX-only permission test skipped on Windows. Ubuntu CI runs that permission
+test as well. Two new dependency-policy tests reject vulnerable minimatch both at
+the root and nested under a patched tree. Three unused Promise resolver placeholders
+were removed from cancellation test callbacks for compatibility with the updated
+lint rule; application code and the cancellation assertions are unchanged.
+
+The license inventory is refreshed against the lockfile and installed notices:
+275 locked locations, 225 installed on Windows, 50 optional platform entries,
+no unknown declarations. All previously retained notice bodies remain available.
+Privacy/public-file checks verify the same frozen verifier and experimental bytes.
+Formatting, lint, typecheck and the production build are required for this update;
+the [Actions page](https://github.com/pranjalmax/IntentBench/actions) identifies the
+hosted result for each commit. The preceding [October 30 run](https://github.com/pranjalmax/IntentBench/actions/runs/41023529593)
+passed every CI step. That historical result does not substitute for the new run.
+
+No Docker startup, live verification, model call or new browser acceptance run
+is part of this tooling-only refresh. The recorded UI/browser evidence above
+remains dated historical evidence. The GitHub repository remains private.
+
 ## Cross-platform test teardown
 
 The first GitHub Actions Linux run exposed 15 teardown failures: immutable snapshot

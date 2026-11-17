@@ -43,6 +43,22 @@ test("a patched top-level Undici does not hide a vulnerable nested copy", () => 
   assert.throws(() => audit.assertDependencyPolicy(reviewedManifest, lock));
 });
 
+test("the dependency gate rejects minimatch affected by GHSA-g3hv-75wg-m249", () => {
+  const lock = structuredClone(reviewedLock);
+  lock.packages["node_modules/minimatch"].version = "10.2.6";
+  assert.throws(() => audit.assertDependencyPolicy(reviewedManifest, lock));
+});
+
+test("a patched top-level minimatch does not hide a vulnerable nested copy", () => {
+  const lock = structuredClone(reviewedLock);
+  lock.packages["node_modules/minimatch"].version = "11.0.5";
+  lock.packages["node_modules/eslint/node_modules/minimatch"] = {
+    ...lock.packages["node_modules/minimatch"],
+    version: "11.0.0",
+  };
+  assert.throws(() => audit.assertDependencyPolicy(reviewedManifest, lock));
+});
+
 test("sealed/internal/credential paths cannot enter a public allowlist", () => {
   for (const name of [
     "intentbench/dev/private/oracle.ts",

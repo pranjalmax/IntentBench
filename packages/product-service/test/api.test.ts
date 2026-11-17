@@ -154,13 +154,12 @@ describe("IntentBench HTTP API", () => {
       dataRoot: path.join(root, "data"),
       runner: new FakeModelRunner(
         async (input) =>
-          await new Promise((resolve, reject) => {
+          await new Promise((_resolve, reject) => {
             input.signal.addEventListener(
               "abort",
               () => reject(new DOMException("cancelled", "AbortError")),
               { once: true },
             );
-            void resolve;
           }),
       ),
     });

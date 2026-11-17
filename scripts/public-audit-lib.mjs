@@ -16,6 +16,12 @@ export function assertDependencyPolicy(manifest, lock) {
   assert.equal(lock.packages["node_modules/vitest"].version, pin);
   assert.equal(lock.packages["node_modules/@vitest/mocker"].version, pin);
   for (const [location, entry] of Object.entries(lock.packages)) {
+    if (/(?:^|\/)node_modules\/minimatch$/u.test(location)) {
+      // GHSA-g3hv-75wg-m249 affects >=7.0.0 <11.0.1, including nested copies.
+      if (Number(entry.version.split(".")[0]) >= 7) {
+        assert.ok(atLeast(entry.version, "11.0.1"), "Unpatched minimatch globparts amplification");
+      }
+    }
     if (/(?:^|\/)node_modules\/undici$/u.test(location)) {
       assert.ok(entry.version.startsWith("7.") && atLeast(entry.version, "7.30.1"));
       assert.equal(entry.dev, true);

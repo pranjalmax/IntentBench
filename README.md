@@ -15,10 +15,13 @@ A local verification workbench · public-source candidate · MIT licensed
 _Recorded genuine acceptance evidence—not a live session or a database preloaded
 into this export. COMPLETE is a verifier judgment, not guaranteed correctness._
 
-**Release status:** unpublished; the [MIT License](LICENSE) is approved and applied. The
-October 29 npm dependency findings have been remediated with supported patch
-updates. See the [dependency report](docs/release/DEPENDENCIES.md) and
-[release audit](docs/release/AUDIT.md). This is not publication clearance.
+**Release status:** private GitHub source candidate; the [MIT License](LICENSE) is
+approved and applied. The November 17 dependency refresh remediates minimatch's
+glob-pattern denial of service through compatible ESLint and typescript-eslint
+upgrades. Full and production-only npm audits report zero findings at that check.
+See the dated [dependency report](docs/release/DEPENDENCIES.md),
+[release audit](docs/release/AUDIT.md) and [CI runs](https://github.com/pranjalmax/IntentBench/actions).
+Public release and deployment remain separate decisions.
 
 ## Inspect the claim behind the conclusion
 
@@ -94,4 +97,4 @@ the advanced system's failure. The original saved database is intentionally abse
 This independently initialized export contains no original Git objects, sealed
 oracles/truth/variants, authentication or private local database. Retrospective
 classifications in reviewed published results are historical evidence, not sealed
-truth source files. No repository publication or deployment is authorized yet.
+truth source files. The GitHub repository remains private; no deployment is included.

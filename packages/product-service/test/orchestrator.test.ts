@@ -122,13 +122,12 @@ describe("verification orchestration", () => {
     const archivePath = await setupArchive(root);
     const runner = new FakeModelRunner(
       async (input) =>
-        await new Promise((resolve, reject) => {
+        await new Promise((_resolve, reject) => {
           input.signal.addEventListener(
             "abort",
             () => reject(new DOMException("cancelled", "AbortError")),
             { once: true },
           );
-          void resolve;
         }),
     );
     const service = new VerificationService({ dataRoot: path.join(root, "data"), runner });
@@ -178,13 +177,12 @@ describe("verification orchestration", () => {
       dataRoot: path.join(root, "data"),
       runner: new FakeModelRunner(
         async (input) =>
-          await new Promise((resolve, reject) => {
+          await new Promise((_resolve, reject) => {
             input.signal.addEventListener(
               "abort",
               () => reject(new DOMException("shutdown", "AbortError")),
               { once: true },
             );
-            void resolve;
           }),
       ),
     });

@@ -1,7 +1,60 @@
-# Dependency remediation — October 29, 2026
+# Dependency remediation — November 17, 2026
 
 Scope: the public-source edition only. Frozen benchmarks, verifier profile/gate,
 experimental trajectories and measured results were not changed or rerun.
+
+## Current refresh: minimatch globparts amplification
+
+The November 17 pre-release audit found **nine moderate package entries** tracing
+to one advisory: [GHSA-g3hv-75wg-m249 / CVE-2026-118764](https://github.com/advisories/GHSA-g3hv-75wg-m249).
+It affects minimatch `>=7.0.0 <11.0.1`; the installed version was 10.2.6. Attacker-controlled
+glob patterns can amplify preprocessing work when `optimizationLevel >= 2`, causing
+CPU/memory exhaustion. This is a tooling exposure when untrusted patterns reach
+the affected matcher, not a finding that the product's loopback API invokes it.
+All affected nodes are development-only; the production-only audit was already clean.
+
+| Dependency chain                                                     | Before | After   |
+| -------------------------------------------------------------------- | ------ | ------- |
+| root → ESLint                                                        | 10.9.1 | 10.15.0 |
+| ESLint → @eslint/config-array                                        | 0.23.5 | 0.23.6  |
+| root → typescript-eslint and its matching helper cohort              | 8.68.0 | 8.73.0  |
+| typescript-eslint → @typescript-eslint/typescript-estree → minimatch | 10.2.6 | 11.0.9  |
+| ESLint → minimatch; ESLint → @eslint/config-array → minimatch        | 10.2.6 | 11.0.9  |
+
+The other affected report entries were `@typescript-eslint/eslint-plugin`,
+`@typescript-eslint/parser`, `@typescript-eslint/type-utils`,
+`@typescript-eslint/typescript-estree` and `@typescript-eslint/utils`: inherited
+exposure, not separate advisories.
+
+The upstream package manifests explicitly adopt the patched major: ESLint 10.15.0
+and config-array 0.23.6 require minimatch `^11.0.5`; typescript-estree 8.73.0 requires
+`^11.0.1`. npm resolves one deduplicated 11.0.9. **No minimatch override was added.**
+The pre-existing Vitest and jsdom/Undici overrides remain unchanged.
+Node 22.20.0 meets ESLint's `^22.13.0` requirement; typescript-eslint supports
+ESLint 10 and TypeScript `>=4.8.4 <6.1.0`, including the retained TypeScript 6.0.3.
+The corresponding ESLint cache dependencies also change within its upstream
+dependency graph. All lockfile changes are development-only, with production
+dependency versions preserved.
+
+Clean installation uses `npm ci --ignore-scripts --strict-peer-deps --no-audit --no-fund`.
+Full and production-only registry audits now return zero findings. No force,
+legacy-peer mode, advisory suppression or manually forced major override is used.
+The tested public dependency gate rejects both the original 10.2.6 and a vulnerable
+nested 11.0.0 copy. Lint/typecheck, full tests and the production build exercise
+the actual upgraded tooling; no artificial high-load denial-of-service attack is
+executed. Three unused resolver placeholders in mocked cancellation tests were
+removed to satisfy the updated lint rule; cancellation behavior is unchanged.
+
+The refreshed license inventory covers 275 lockfile locations (225 installed on
+Windows, 50 optional platform entries), with no unknown declarations. Current
+notice texts are included and previously collected notice bodies are retained.
+See [validation](VALIDATION.md) and [GitHub Actions](https://github.com/pranjalmax/IntentBench/actions)
+for source gates. Audits are point-in-time results; they do not cover the OS,
+Node's bundled components or the frozen live Docker image.
+
+## Historical October 29, 2026 remediation
+
+The following findings and validation refer to the earlier dependency refresh.
 
 ## Exact findings and dependency paths
 
@@ -103,6 +156,7 @@ fresh-machine isolated live execution remain separate requirements. Keep develop
 servers loopback-only, do not run untrusted repository tests on the host, and do not
 enable live mode without its exact validated isolation prerequisites.
 
-Hosted GitHub/Linux execution is not claimed: no remote, push or publication was
-authorized. Separate publication approval and documented binary/image notice review remain
-separate from remediation of these npm package findings.
+Hosted GitHub/Linux execution subsequently passed at the October 30 cleanup-fix
+commit ([run 41023529593](https://github.com/pranjalmax/IntentBench/actions/runs/41023529593)).
+The repository is private. Separate public-publication approval and documented
+binary/image notice review remain distinct from remediation of npm findings.

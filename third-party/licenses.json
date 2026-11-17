@@ -3,15 +3,15 @@
   "scope": "All lockfile package locations, including optional platform dependencies; root project license excluded",
   "projectLicense": "MIT",
   "counts": {
-    "MIT": 207,
+    "MIT": 215,
     "MPL-2.0": 14,
     "MIT-0": 2,
     "Apache-2.0": 18,
     "OFL-1.1": 2,
+    "BlueOak-1.0.0": 3,
     "BSD-2-Clause": 8,
     "BSD-3-Clause": 4,
     "ISC": 8,
-    "BlueOak-1.0.0": 2,
     "CC0-1.0": 1
   },
   "unknown": [],
@@ -42,7 +42,7 @@
       "notices": [
         {
           "file": "LICENSE",
-          "sha256": "2f11a643ac2dfffa6649f388df26c2310830580d4077ebccba923811c52bb8b1"
+          "sha256": "bd4539377980dd797fc6a51d90e664e52b2b2625b2158f01d4c68b5fe107eacb"
         }
       ]
     },
@@ -57,7 +57,7 @@
       "notices": [
         {
           "file": "LICENSE",
-          "sha256": "c2fe8edc6572312535eea25abd4af682eb85cfc90a97ee1137d1cf6edca991cf"
+          "sha256": "7cdf9db3b91cc77b9ec947ad0c7126140f00e34528b67c3a58e9fc1a98055e14"
         }
       ]
     },
@@ -163,6 +163,36 @@
         {
           "file": "LICENSE",
           "sha256": "ae842a63dd9bc829c95a2ec22dda25a08e422a368b71dbca67a45cde7c4a4b81"
+        }
+      ]
+    },
+    {
+      "name": "@cacheable/memory",
+      "version": "2.2.0",
+      "license": "MIT",
+      "dev": true,
+      "optional": false,
+      "installed": true,
+      "location": "node_modules/@cacheable/memory",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "465e8da349d50d8512e4a0e9b26d2bee50392c394f17edaa3be6e0df7c2b27ad"
+        }
+      ]
+    },
+    {
+      "name": "@cacheable/utils",
+      "version": "2.5.0",
+      "license": "MIT",
+      "dev": true,
+      "optional": false,
+      "installed": true,
+      "location": "node_modules/@cacheable/utils",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "465e8da349d50d8512e4a0e9b26d2bee50392c394f17edaa3be6e0df7c2b27ad"
         }
       ]
     },
@@ -563,7 +593,7 @@
     },
     {
       "name": "@eslint/config-array",
-      "version": "0.23.5",
+      "version": "0.23.6",
       "license": "Apache-2.0",
       "dev": true,
       "optional": false,
@@ -638,7 +668,7 @@
     },
     {
       "name": "@eslint/plugin-kit",
-      "version": "0.7.2",
+      "version": "0.7.3",
       "license": "Apache-2.0",
       "dev": true,
       "optional": false,
@@ -767,6 +797,21 @@
       ]
     },
     {
+      "name": "@isaacs/nonrecursive-glob-match",
+      "version": "1.1.0",
+      "license": "BlueOak-1.0.0",
+      "dev": true,
+      "optional": false,
+      "installed": true,
+      "location": "node_modules/@isaacs/nonrecursive-glob-match",
+      "notices": [
+        {
+          "file": "LICENSE.md",
+          "sha256": "8a1af140fdfbf5afd3df27f7e662f989c5b963a300020dfafce42033cae9e004"
+        }
+      ]
+    },
+    {
       "name": "@jridgewell/sourcemap-codec",
       "version": "1.6.0",
       "license": "MIT",
@@ -778,6 +823,36 @@
         {
           "file": "LICENSE",
           "sha256": "769d154fbde32a915af110b1123650bc79f4cbe675acc66e005265bf069c6c6c"
+        }
+      ]
+    },
+    {
+      "name": "@keyv/bigmap",
+      "version": "1.3.1",
+      "license": "MIT",
+      "dev": true,
+      "optional": false,
+      "installed": true,
+      "location": "node_modules/@keyv/bigmap",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "f18cad8d98d4454ad42c33f1950d642cd3b939f2ccd3c36710fa8f50842cacc0"
+        }
+      ]
+    },
+    {
+      "name": "@keyv/serialize",
+      "version": "1.1.1",
+      "license": "MIT",
+      "dev": true,
+      "optional": false,
+      "installed": true,
+      "location": "node_modules/@keyv/serialize",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "1f7dca26d2d328c3dbb9b6fe3b15ec3cda08ffe2288e47b73d617454b256f959"
         }
       ]
     },
@@ -1203,7 +1278,7 @@
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
-      "version": "8.68.0",
+      "version": "8.73.0",
       "license": "MIT",
       "dev": true,
       "optional": false,
@@ -1218,7 +1293,7 @@
     },
     {
       "name": "ignore",
-      "version": "7.0.7",
+      "version": "7.0.16",
       "license": "MIT",
       "dev": true,
       "optional": false,
@@ -1233,7 +1308,7 @@
     },
     {
       "name": "@typescript-eslint/parser",
-      "version": "8.68.0",
+      "version": "8.73.0",
       "license": "MIT",
       "dev": true,
       "optional": false,
@@ -1248,7 +1323,7 @@
     },
     {
       "name": "@typescript-eslint/project-service",
-      "version": "8.68.0",
+      "version": "8.73.0",
       "license": "MIT",
       "dev": true,
       "optional": false,
@@ -1263,7 +1338,7 @@
     },
     {
       "name": "@typescript-eslint/scope-manager",
-      "version": "8.68.0",
+      "version": "8.73.0",
       "license": "MIT",
       "dev": true,
       "optional": false,
@@ -1278,7 +1353,7 @@
     },
     {
       "name": "@typescript-eslint/tsconfig-utils",
-      "version": "8.68.0",
+      "version": "8.73.0",
       "license": "MIT",
       "dev": true,
       "optional": false,
@@ -1293,7 +1368,7 @@
     },
     {
       "name": "@typescript-eslint/type-utils",
-      "version": "8.68.0",
+      "version": "8.73.0",
       "license": "MIT",
       "dev": true,
       "optional": false,
@@ -1308,7 +1383,7 @@
     },
     {
       "name": "@typescript-eslint/types",
-      "version": "8.68.0",
+      "version": "8.73.0",
       "license": "MIT",
       "dev": true,
       "optional": false,
@@ -1323,7 +1398,7 @@
     },
     {
       "name": "@typescript-eslint/typescript-estree",
-      "version": "8.68.0",
+      "version": "8.73.0",
       "license": "MIT",
       "dev": true,
       "optional": false,
@@ -1338,7 +1413,7 @@
     },
     {
       "name": "@typescript-eslint/utils",
-      "version": "8.68.0",
+      "version": "8.73.0",
       "license": "MIT",
       "dev": true,
       "optional": false,
@@ -1353,7 +1428,7 @@
     },
     {
       "name": "@typescript-eslint/visitor-keys",
-      "version": "8.68.0",
+      "version": "8.73.0",
       "license": "MIT",
       "dev": true,
       "optional": false,
@@ -1657,7 +1732,7 @@
     },
     {
       "name": "brace-expansion",
-      "version": "5.0.12",
+      "version": "5.0.13",
       "license": "MIT",
       "dev": true,
       "optional": false,
@@ -1682,6 +1757,21 @@
         {
           "file": "LICENSE",
           "sha256": "ddc9158fa20e427bc12fa8e1e6d07c642ed4d2c618607df768b30ae2986b3b7c"
+        }
+      ]
+    },
+    {
+      "name": "cacheable",
+      "version": "2.5.0",
+      "license": "MIT",
+      "dev": true,
+      "optional": false,
+      "installed": true,
+      "location": "node_modules/cacheable",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "465e8da349d50d8512e4a0e9b26d2bee50392c394f17edaa3be6e0df7c2b27ad"
         }
       ]
     },
@@ -1816,7 +1906,7 @@
       "notices": [
         {
           "file": "LICENCE.md",
-          "sha256": "a0df2307b32880324fc5f42def582b5c1fa2058a30bbab90731c948241a5c7c2"
+          "sha256": "3108b546bcff5d346923a82f48b2d252ca722f9088076db6d145f6b67757ad6c"
         }
       ]
     },
@@ -1942,7 +2032,7 @@
     },
     {
       "name": "eslint",
-      "version": "10.9.1",
+      "version": "10.15.0",
       "license": "MIT",
       "dev": true,
       "optional": false,
@@ -2192,7 +2282,7 @@
     },
     {
       "name": "file-entry-cache",
-      "version": "8.0.0",
+      "version": "11.1.5",
       "license": "MIT",
       "dev": true,
       "optional": false,
@@ -2201,7 +2291,7 @@
       "notices": [
         {
           "file": "LICENSE",
-          "sha256": "a0e2f73971f663b49d3c66cc6749fc88de0f475680ccf5b980a9cbcc0c52490f"
+          "sha256": "465e8da349d50d8512e4a0e9b26d2bee50392c394f17edaa3be6e0df7c2b27ad"
         }
       ]
     },
@@ -2222,7 +2312,7 @@
     },
     {
       "name": "flat-cache",
-      "version": "4.0.1",
+      "version": "6.1.23",
       "license": "MIT",
       "dev": true,
       "optional": false,
@@ -2231,7 +2321,7 @@
       "notices": [
         {
           "file": "LICENSE",
-          "sha256": "a6a23fb76d91d98669f5ed6eb58213df594ab2d56c9e981ae021b194e3d662a7"
+          "sha256": "465e8da349d50d8512e4a0e9b26d2bee50392c394f17edaa3be6e0df7c2b27ad"
         }
       ]
     },
@@ -2272,6 +2362,36 @@
         {
           "file": "LICENSE",
           "sha256": "fc68eb8f1c8e1d6b8be50f3c177927e24791cae7dc251e6253a012f37926a30c"
+        }
+      ]
+    },
+    {
+      "name": "hashery",
+      "version": "1.5.1",
+      "license": "MIT",
+      "dev": true,
+      "optional": false,
+      "installed": true,
+      "location": "node_modules/hashery",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "2eef776efe4bae7fcd2d8162ecadf2b0873aae20afac343a936ddb0de3d79253"
+        }
+      ]
+    },
+    {
+      "name": "hookified",
+      "version": "1.15.1",
+      "license": "MIT",
+      "dev": true,
+      "optional": false,
+      "installed": true,
+      "location": "node_modules/hookified",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "3902e57e73412bd91ba81a47fa2cef45e1729c152c835114c1692cc5e685ddbe"
         }
       ]
     },
@@ -2421,21 +2541,6 @@
       ]
     },
     {
-      "name": "json-buffer",
-      "version": "3.0.1",
-      "license": "MIT",
-      "dev": true,
-      "optional": false,
-      "installed": true,
-      "location": "node_modules/json-buffer",
-      "notices": [
-        {
-          "file": "LICENSE",
-          "sha256": "715f1f0f2eb7688e53e4e958acdc7fc9e365ae3eaf26efc2604b93cc65fdc3f5"
-        }
-      ]
-    },
-    {
       "name": "json-schema-traverse",
       "version": "1.0.0",
       "license": "MIT",
@@ -2467,13 +2572,18 @@
     },
     {
       "name": "keyv",
-      "version": "4.5.4",
+      "version": "5.6.0",
       "license": "MIT",
       "dev": true,
       "optional": false,
       "installed": true,
       "location": "node_modules/keyv",
-      "notices": []
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "1f7dca26d2d328c3dbb9b6fe3b15ec3cda08ffe2288e47b73d617454b256f959"
+        }
+      ]
     },
     {
       "name": "levn",
@@ -2712,7 +2822,7 @@
     },
     {
       "name": "minimatch",
-      "version": "10.2.6",
+      "version": "11.0.9",
       "license": "BlueOak-1.0.0",
       "dev": true,
       "optional": false,
@@ -2941,7 +3051,7 @@
       "notices": [
         {
           "file": "LICENSE",
-          "sha256": "7fab1461b41970ff376f1c9303a637076bfaaeb71cd12dd3a1c44aaf59a1a2b9"
+          "sha256": "45873d00a0dd243596deb4aa23b2493b3d1f0671921bf2538ea431d7380220eb"
         },
         {
           "file": "NOTICE",
@@ -3021,6 +3131,36 @@
         {
           "file": "LICENSE-MIT.txt",
           "sha256": "483acb265f182907d1caf6cff9c16c96f31325ed23792832cc5d8b12d5f88c8a"
+        }
+      ]
+    },
+    {
+      "name": "qified",
+      "version": "0.10.1",
+      "license": "MIT",
+      "dev": true,
+      "optional": false,
+      "installed": true,
+      "location": "node_modules/qified",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "3902e57e73412bd91ba81a47fa2cef45e1729c152c835114c1692cc5e685ddbe"
+        }
+      ]
+    },
+    {
+      "name": "hookified",
+      "version": "2.2.0",
+      "license": "MIT",
+      "dev": true,
+      "optional": false,
+      "installed": true,
+      "location": "node_modules/qified/node_modules/hookified",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "3902e57e73412bd91ba81a47fa2cef45e1729c152c835114c1692cc5e685ddbe"
         }
       ]
     },
@@ -3141,7 +3281,7 @@
     },
     {
       "name": "semver",
-      "version": "7.8.5",
+      "version": "7.8.6",
       "license": "ISC",
       "dev": true,
       "optional": false,
@@ -3445,13 +3585,13 @@
       "notices": [
         {
           "file": "LICENSE.txt",
-          "sha256": "a5e9f9b1575301c7a7a03508fdaa2e05a918cc17fd21c6e898096a96d6a34f61"
+          "sha256": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47"
         }
       ]
     },
     {
       "name": "typescript-eslint",
-      "version": "8.68.0",
+      "version": "8.73.0",
       "license": "MIT",
       "dev": true,
       "optional": false,

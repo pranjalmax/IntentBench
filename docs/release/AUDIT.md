@@ -1,8 +1,9 @@
 # Public export audit
 
-This candidate is prepared for owner review, **not cleared for publication**.
-The owner-approved [MIT License](../../LICENSE) is applied. No remote, repository visibility
-change, GitHub publication or deployment occurs during preparation.
+This source candidate is stored in the existing **private** GitHub repository and
+is **not cleared for public publication** by this audit. The owner-approved
+[MIT License](../../LICENSE) is applied. No visibility change or deployment is part
+of dependency remediation.
 
 ## Export boundary
 
@@ -31,8 +32,8 @@ known vulnerabilities. That result is historical, not the current release-securi
 
 **October 29 remediation:** the initial refresh reported three affected development
 package entries, representing ten unique upstream advisories. Vitest/mocker now
-use 4.1.12 and jsdom's Undici uses 7.30.1. The updated tree reports zero registry
-findings. Production dependency versions are unchanged. This is not a claim that
+use 4.1.12 and jsdom's Undici uses 7.30.1. That refresh reported zero registry
+findings. Production dependency versions were unchanged. This is not a claim that
 every network exploit or the system/runtime image has been independently tested.
 
 The npm `edgesOut` crash was reproduced and traced to a detached Vitest 5 node
@@ -43,10 +44,20 @@ Strict installation and the complete installed graph are validated; no global np
 change, `--force`, legacy-peer mode, audit suppression or manual lockfile rewrite
 was used. See the [exact advisories, dependency chains, root cause and limits](DEPENDENCIES.md).
 
-[License inventory](../../third-party/licenses.json) records all 266 locked package
-locations with no missing license declarations. There are 216 installed locations
+**November 17 remediation:** a fresh audit found nine moderate affected package
+entries tracing to one advisory, **GHSA-g3hv-75wg-m249**. Compatible upstream
+ESLint 10.15.0 and typescript-eslint 8.73.0 upgrades resolve minimatch 11.0.9 through
+their own supported dependency ranges, without a minimatch override. Clean strict
+installation and full/production-only audits pass with zero findings. All changed
+lockfile nodes are development-only; production versions and application source
+are unchanged. Earlier clean audits are historical snapshots, not promises about
+future advisories.
+
+[License inventory](../../third-party/licenses.json) records all 275 locked package
+locations with no missing license declarations. There are 225 installed locations
 on the audited Windows platform and 50 optional platform entries. [Notices](../../third-party/NOTICES.md)
-retain 132 unique available upstream notice texts. Nine installed packages have
+retain current and previously reviewed upstream notice texts (134 active notice
+groups in the refreshed tree). Eight installed packages have
 no top-level notice file; their declared licensing is recorded, not silently inferred
 from a fabricated notice. Additional upstream/source-availability review is needed
 before distributing bundled dependencies or images.
@@ -63,8 +74,10 @@ format/lint/typecheck/tests/build, public-file audit, strict peer-graph checks,
 and full plus production-only registry audits without a severity threshold.
 No model, Docker, deployment, package publishing or artifact upload job is configured.
 The [GitHub secure-use reference](https://docs.github.com/en/actions/reference/security/secure-use)
-informs these controls. GitHub-hosted execution remains unverified until publication
-is separately approved; local fresh-clone checks are distinct evidence.
+informs these controls. [Ubuntu run 41023529593](https://github.com/pranjalmax/IntentBench/actions/runs/41023529593)
+passed all source gates at the preceding cleanup-fix commit. Each dependency update
+must also pass its own complete [Actions run](https://github.com/pranjalmax/IntentBench/actions)
+before being reported complete. Local installation checks are distinct evidence.
 
 ## Remaining blockers / scope limits
 

@@ -1,8 +1,9 @@
 # Public source release candidate — unpublished
 
 This is a clean, independently initialized source export, not the internal research
-repository or its Git history. No remote, release tag, public repository or deployment
-is created. IntentBench is licensed under the [MIT License](LICENSE), approved by
+repository or its Git history. The existing GitHub repository remains private.
+No public release, release tag or application deployment is created by this update.
+IntentBench is licensed under the [MIT License](LICENSE), approved by
 the owner with Copyright (c) 2026 Pranjal Srivastava. [License details](LICENSE-DECISION.md).
 
 ## Included
@@ -41,6 +42,14 @@ version changed. Full and production-only registry audits report zero findings.
 Regression checks reject the original vulnerable versions and mixed test cohorts;
 CI now uses strict peer validation and audits all severities. Exact advisories and
 limitations are in the [dependency report](docs/release/DEPENDENCIES.md).
+
+The November 17 refresh addresses **GHSA-g3hv-75wg-m249** by upgrading ESLint
+10.9.1 → 10.15.0 and typescript-eslint 8.68.0 → 8.73.0. Their supported upstream
+dependency ranges resolve minimatch 11.0.9; no minimatch override is used.
+All changed packages are development dependencies. Full and production-only npm
+audits report zero findings at this refresh. Regression checks reject vulnerable
+top-level and nested minimatch copies; third-party inventories/notices are updated.
+The application, frozen verifier and historical experimental results are unchanged.
 
 Final accuracy remains **V0 8/12, A1.1 8/12**. A1.1 accepted one extra golden but had
 one UNKNOWN and 5.175× review runtime; no accuracy improvement is claimed. COMPLETE
