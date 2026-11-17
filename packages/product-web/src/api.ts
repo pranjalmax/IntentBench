@@ -3,10 +3,13 @@ import type {
   VerificationActivityEvent,
   VerificationStatusView,
 } from "../../product-service/src/contracts.js";
+import { staticReplay, applicationBase } from "./edition.js";
+import { ReplayData } from "./replay-data.js";
 
 export type { VerificationReport, VerificationActivityEvent, VerificationStatusView };
 
 export async function request<T>(url: string, init?: RequestInit): Promise<T> {
+  if (staticReplay) return (await new ReplayData(applicationBase).request(url, init)) as T;
   const response = await fetch(url, init);
   const data: unknown = await response.json();
   if (!response.ok) {
@@ -36,8 +39,10 @@ export const api = {
     request(`${runPath(id)}/report`, signal ? { signal } : undefined),
   cancel: async (id: string): Promise<VerificationStatusView> =>
     request(`${runPath(id)}/cancel`, { method: "POST" }),
-  exportUrl: (id: string, format: "json" | "md"): string =>
-    `${runPath(id)}/exports/report.${format}`,
+  exportUrl: (id: string, format: "json" | "md"): string => {
+    if (staticReplay) throw new Error("Unavailable in static REPLAY. Use the recorded download.");
+    return `${runPath(id)}/exports/report.${format}`;
+  },
 };
 
 export function isTerminal(status: VerificationStatusView): boolean {

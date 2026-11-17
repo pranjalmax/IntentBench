@@ -3,6 +3,7 @@ import type { CandidateSnapshotManifest } from "../../product-core/src/schemas.j
 import type { RunHistory } from "../../product-service/src/product-library.js";
 import { request, api, type VerificationReport, type VerificationStatusView } from "./api.js";
 import { summarizeReview } from "./report-view.js";
+import { staticReplay } from "./edition.js";
 
 export function useResource<T>(key: string, load: (signal: AbortSignal) => Promise<T>) {
   const [state, setState] = useState<{ key: string; data?: T; error?: string }>({ key });
@@ -41,7 +42,13 @@ export function ResourceState({
 }) {
   return (
     <div className="paper library-empty" role={error ? "alert" : "status"}>
-      <h2>{error ? "The record is out of reach." : "Reading the local record…"}</h2>
+      <h2>
+        {error
+          ? "The record is out of reach."
+          : staticReplay
+            ? "Reading recorded evidence…"
+            : "Reading the local record…"}
+      </h2>
       <p>{error ?? children ?? "Loading persisted data. Nothing is being simulated."}</p>
       {error && (
         <button className="button paper-button" onClick={retry}>

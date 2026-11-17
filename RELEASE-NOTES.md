@@ -1,8 +1,16 @@
-# Public source release candidate — unpublished
+# Public source and static REPLAY feature
 
 This is a clean, independently initialized source export, not the internal research
-repository or its Git history. The existing GitHub repository remains private.
+repository or its Git history. The existing GitHub source repository is public.
 No public release, release tag or application deployment is created by this update.
+
+The static REPLAY feature adds a separate GitHub Pages-compatible build with the
+existing workbench design, authentic research comparisons, six selected traces,
+the saved acceptance report, evidence navigation and JSON/Markdown downloads.
+The site has no live backend, uploads, authentication or model calls. Missing
+source/history and live execution are explicitly unavailable. The local product
+remains independently runnable. This feature is submitted as a PR: it does not
+merge, enable Pages or deploy. See [static edition](docs/release/STATIC-REPLAY.md).
 IntentBench is licensed under the [MIT License](LICENSE), approved by
 the owner with Copyright (c) 2026 Pranjal Srivastava. [License details](LICENSE-DECISION.md).
 
